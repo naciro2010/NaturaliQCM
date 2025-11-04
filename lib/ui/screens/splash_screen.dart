@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/database_helper.dart';
 import '../../data/lesson_repository.dart';
+import '../../data/question_repository.dart';
 
 /// Écran de chargement initial
 class SplashScreen extends StatefulWidget {
@@ -29,6 +30,10 @@ class _SplashScreenState extends State<SplashScreen> {
       // Charger les leçons depuis le fichier JSON
       final lessonRepo = LessonRepository();
       await lessonRepo.loadLessonsFromAssets();
+
+      // Charger les questions depuis le fichier JSON
+      final questionRepo = QuestionRepository();
+      await questionRepo.loadQuestionsFromAssets();
 
       // Attendre un minimum de temps pour l'effet splash
       await Future.delayed(const Duration(milliseconds: 1500));
