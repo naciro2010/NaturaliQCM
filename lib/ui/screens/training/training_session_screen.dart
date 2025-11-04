@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../../domain/services/spaced_repetition_service.dart';
 import '../../../data/database_helper.dart';
+import '../../../data/question_repository.dart';
+import '../../../data/models/question_model.dart';
 import '../../themes/app_theme.dart';
 import '../../widgets/buttons/primary_button.dart';
+import 'quiz_screen.dart';
 
 /// Écran de session d'entraînement personnalisée
 class TrainingSessionScreen extends StatefulWidget {
@@ -225,16 +228,41 @@ class _TrainingSessionScreenState extends State<TrainingSessionScreen> {
           ),
           const SizedBox(height: 32),
           PrimaryButton(
-            onPressed: () {
-              // TODO: Implémenter l'écran de quiz avec les questions
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text(
-                    'L\'interface de quiz sera implémentée dans le prochain lot',
+            onPressed: () async {
+              // Charger les questions à partir de leurs IDs
+              final questionRepo = QuestionRepository();
+              final questions = await questionRepo.getQuestionsByIds(_questionIds);
+
+              if (questions.isEmpty) {
+                if (mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Impossible de charger les questions'),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
+                return;
+              }
+
+              // Récupérer l'ID utilisateur
+              final db = DatabaseHelper.instance;
+              final userProfile = await db.getUserProfile();
+              if (userProfile == null) return;
+              final userId = userProfile['id'] as int;
+
+              // Naviguer vers l'écran de quiz
+              if (mounted) {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => QuizScreen(
+                      questions: questions,
+                      userId: userId,
+                      themeId: widget.themeId,
+                    ),
                   ),
-                  duration: Duration(seconds: 3),
-                ),
-              );
+                );
+              }
             },
             text: 'Commencer la session',
           ),

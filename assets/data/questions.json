@@ -1,0 +1,684 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "theme_id": 1,
+      "subtheme_id": 1,
+      "type": "knowledge",
+      "difficulty": "easy",
+      "question_text": "Qu'est-ce que la République selon la Constitution française ?",
+      "lesson_reference": "THEME_1_LESSON_1",
+      "explanation": "La République française est définie par quatre principes fondamentaux : elle est indivisible, laïque, démocratique et sociale. Ces principes sont inscrits à l'article 1er de la Constitution.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Indivisible, laïque, démocratique et sociale", "is_correct": true, "display_order": 1},
+        {"choice_text": "Unitaire, religieuse, monarchique et libérale", "is_correct": false, "display_order": 2},
+        {"choice_text": "Fédérale, laïque, autoritaire et capitaliste", "is_correct": false, "display_order": 3},
+        {"choice_text": "Divisible, catholique, démocratique et communiste", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 2,
+      "theme_id": 1,
+      "subtheme_id": 1,
+      "type": "practicalScenario",
+      "difficulty": "medium",
+      "question_text": "Vous assistez à une réunion publique où un intervenant affirme que la France devrait adopter une religion d'État. Quelle est la position constitutionnelle française sur ce sujet ?",
+      "lesson_reference": "THEME_1_LESSON_2",
+      "explanation": "La laïcité est un principe constitutionnel en France. L'article 1er de la Constitution garantit que la République respecte toutes les croyances mais n'en reconnaît, ne salarie ni ne subventionne aucun culte. Toute proposition d'établir une religion d'État serait anticonstitutionnelle.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "La Constitution interdit toute religion d'État, la France est laïque", "is_correct": true, "display_order": 1},
+        {"choice_text": "La Constitution autorise le catholicisme comme religion d'État", "is_correct": false, "display_order": 2},
+        {"choice_text": "Chaque région peut choisir sa propre religion officielle", "is_correct": false, "display_order": 3},
+        {"choice_text": "La Constitution ne mentionne pas la religion", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 3,
+      "theme_id": 1,
+      "subtheme_id": 1,
+      "type": "knowledge",
+      "difficulty": "medium",
+      "question_text": "Quelle est la devise de la République française ?",
+      "lesson_reference": "THEME_1_LESSON_1",
+      "explanation": "La devise de la République française est 'Liberté, Égalité, Fraternité'. Elle est inscrite sur les bâtiments publics et figure dans la Constitution.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Liberté, Égalité, Fraternité", "is_correct": true, "display_order": 1},
+        {"choice_text": "Honneur, Patrie, Valeur", "is_correct": false, "display_order": 2},
+        {"choice_text": "Unité, Justice, Solidarité", "is_correct": false, "display_order": 3},
+        {"choice_text": "Travail, Famille, Patrie", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 4,
+      "theme_id": 1,
+      "subtheme_id": 2,
+      "type": "knowledge",
+      "difficulty": "hard",
+      "question_text": "Combien de révisions constitutionnelles majeures la Constitution de 1958 a-t-elle connues ?",
+      "lesson_reference": "THEME_1_LESSON_3",
+      "explanation": "La Constitution de 1958 a été révisée plus de 24 fois depuis son adoption. Les révisions les plus importantes incluent l'élection du Président au suffrage universel direct (1962), la réduction du mandat présidentiel de 7 à 5 ans (2000), et l'introduction du référendum d'initiative partagée (2008).",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Plus de 24 révisions", "is_correct": true, "display_order": 1},
+        {"choice_text": "Aucune révision, elle est immuable", "is_correct": false, "display_order": 2},
+        {"choice_text": "Exactement 5 révisions", "is_correct": false, "display_order": 3},
+        {"choice_text": "10 révisions", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 5,
+      "theme_id": 1,
+      "subtheme_id": 2,
+      "type": "practicalScenario",
+      "difficulty": "hard",
+      "question_text": "Un citoyen souhaite proposer une révision de la Constitution. Quelles sont les voies possibles ?",
+      "lesson_reference": "THEME_1_LESSON_4",
+      "explanation": "L'initiative d'une révision constitutionnelle appartient au Président de la République (sur proposition du Premier ministre) ou aux membres du Parlement. Un référendum d'initiative partagée peut aussi être organisé si 1/5 des parlementaires et 10% des électeurs le soutiennent. Un simple citoyen ne peut pas seul proposer une révision.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Soutenir un référendum d'initiative partagée avec des parlementaires", "is_correct": true, "display_order": 1},
+        {"choice_text": "Déposer directement une proposition au Conseil constitutionnel", "is_correct": false, "display_order": 2},
+        {"choice_text": "Organiser une pétition de 100 000 signatures", "is_correct": false, "display_order": 3},
+        {"choice_text": "Saisir le Président de la République par courrier", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 6,
+      "theme_id": 2,
+      "subtheme_id": 3,
+      "type": "knowledge",
+      "difficulty": "easy",
+      "question_text": "Quel est le rôle principal du Président de la République ?",
+      "lesson_reference": "THEME_2_LESSON_21",
+      "explanation": "Le Président de la République est le garant de l'indépendance nationale, de l'intégrité du territoire et du respect des traités. Il est élu pour 5 ans au suffrage universel direct et dispose de pouvoirs importants en matière de défense et de politique étrangère.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Garant de la Constitution et de l'indépendance nationale", "is_correct": true, "display_order": 1},
+        {"choice_text": "Diriger le gouvernement au quotidien", "is_correct": false, "display_order": 2},
+        {"choice_text": "Voter les lois à l'Assemblée nationale", "is_correct": false, "display_order": 3},
+        {"choice_text": "Juger les affaires pénales", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 7,
+      "theme_id": 2,
+      "subtheme_id": 3,
+      "type": "knowledge",
+      "difficulty": "medium",
+      "question_text": "Quelle est la durée du mandat présidentiel en France ?",
+      "lesson_reference": "THEME_2_LESSON_21",
+      "explanation": "Depuis la réforme constitutionnelle de 2000 (quinquennat), le mandat présidentiel est de 5 ans, renouvelable une fois consécutivement. Auparavant, il était de 7 ans (septennat).",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "5 ans, renouvelable une fois", "is_correct": true, "display_order": 1},
+        {"choice_text": "7 ans, non renouvelable", "is_correct": false, "display_order": 2},
+        {"choice_text": "4 ans, renouvelable indéfiniment", "is_correct": false, "display_order": 3},
+        {"choice_text": "6 ans, renouvelable deux fois", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 8,
+      "theme_id": 2,
+      "subtheme_id": 3,
+      "type": "knowledge",
+      "difficulty": "medium",
+      "question_text": "Qui nomme le Premier ministre en France ?",
+      "lesson_reference": "THEME_2_LESSON_22",
+      "explanation": "Le Premier ministre est nommé par le Président de la République. Il dirige l'action du gouvernement et est responsable devant l'Assemblée nationale.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Le Président de la République", "is_correct": true, "display_order": 1},
+        {"choice_text": "L'Assemblée nationale", "is_correct": false, "display_order": 2},
+        {"choice_text": "Le Sénat", "is_correct": false, "display_order": 3},
+        {"choice_text": "Le Conseil constitutionnel", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 9,
+      "theme_id": 2,
+      "subtheme_id": 4,
+      "type": "knowledge",
+      "difficulty": "easy",
+      "question_text": "Combien de députés composent l'Assemblée nationale ?",
+      "lesson_reference": "THEME_2_LESSON_23",
+      "explanation": "L'Assemblée nationale compte 577 députés élus pour 5 ans au suffrage universel direct. Ils votent les lois et contrôlent l'action du gouvernement.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "577 députés", "is_correct": true, "display_order": 1},
+        {"choice_text": "348 députés", "is_correct": false, "display_order": 2},
+        {"choice_text": "650 députés", "is_correct": false, "display_order": 3},
+        {"choice_text": "500 députés", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 10,
+      "theme_id": 2,
+      "subtheme_id": 4,
+      "type": "knowledge",
+      "difficulty": "medium",
+      "question_text": "Quel est le mode de scrutin pour élire les députés ?",
+      "lesson_reference": "THEME_2_LESSON_23",
+      "explanation": "Les députés sont élus au scrutin uninominal majoritaire à deux tours. Pour être élu au premier tour, un candidat doit obtenir la majorité absolue des suffrages exprimés et au moins 25% des électeurs inscrits.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Scrutin uninominal majoritaire à deux tours", "is_correct": true, "display_order": 1},
+        {"choice_text": "Scrutin proportionnel à la plus forte moyenne", "is_correct": false, "display_order": 2},
+        {"choice_text": "Scrutin de liste à un tour", "is_correct": false, "display_order": 3},
+        {"choice_text": "Scrutin mixte proportionnel", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 11,
+      "theme_id": 2,
+      "subtheme_id": 4,
+      "type": "knowledge",
+      "difficulty": "hard",
+      "question_text": "Combien de sénateurs composent le Sénat français ?",
+      "lesson_reference": "THEME_2_LESSON_24",
+      "explanation": "Le Sénat compte 348 sénateurs élus pour 6 ans au suffrage universel indirect par les grands électeurs (députés, sénateurs, conseillers régionaux, départementaux et délégués des conseils municipaux). Le Sénat est renouvelé par moitié tous les 3 ans.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "348 sénateurs", "is_correct": true, "display_order": 1},
+        {"choice_text": "577 sénateurs", "is_correct": false, "display_order": 2},
+        {"choice_text": "200 sénateurs", "is_correct": false, "display_order": 3},
+        {"choice_text": "400 sénateurs", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 12,
+      "theme_id": 2,
+      "subtheme_id": 5,
+      "type": "knowledge",
+      "difficulty": "medium",
+      "question_text": "Quel est le rôle du Conseil constitutionnel ?",
+      "lesson_reference": "THEME_2_LESSON_25",
+      "explanation": "Le Conseil constitutionnel vérifie la conformité des lois à la Constitution. Il contrôle également la régularité des élections présidentielles et législatives, ainsi que des référendums.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Vérifier la conformité des lois à la Constitution", "is_correct": true, "display_order": 1},
+        {"choice_text": "Juger les crimes et délits", "is_correct": false, "display_order": 2},
+        {"choice_text": "Voter les lois", "is_correct": false, "display_order": 3},
+        {"choice_text": "Nommer les ministres", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 13,
+      "theme_id": 3,
+      "subtheme_id": 6,
+      "type": "knowledge",
+      "difficulty": "easy",
+      "question_text": "Qu'est-ce que la liberté d'expression ?",
+      "lesson_reference": "THEME_3_LESSON_41",
+      "explanation": "La liberté d'expression est le droit de communiquer ses opinions et idées sans crainte de censure ou de sanction. Elle est garantie par la Déclaration des droits de l'homme et du citoyen de 1789 et fait partie des libertés fondamentales.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Le droit de communiquer ses opinions sans censure", "is_correct": true, "display_order": 1},
+        {"choice_text": "Le droit de critiquer le gouvernement seulement", "is_correct": false, "display_order": 2},
+        {"choice_text": "Le droit de dire tout ce qu'on veut sans limite", "is_correct": false, "display_order": 3},
+        {"choice_text": "Le droit réservé aux journalistes", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 14,
+      "theme_id": 3,
+      "subtheme_id": 6,
+      "type": "practicalScenario",
+      "difficulty": "medium",
+      "question_text": "Vous publiez un article critiquant une politique gouvernementale sur les réseaux sociaux. Votre employeur vous menace de licenciement. Quelle est votre situation juridique ?",
+      "lesson_reference": "THEME_3_LESSON_41",
+      "explanation": "La liberté d'expression est protégée, mais elle a des limites dans le cadre professionnel. Un employé a le droit de critiquer le gouvernement dans sa vie privée, mais doit respecter une obligation de loyauté envers son employeur. Si la critique ne vise pas l'employeur et reste mesurée, le licenciement pourrait être abusif.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "La liberté d'expression protège votre critique si elle reste dans des limites raisonnables", "is_correct": true, "display_order": 1},
+        {"choice_text": "L'employeur peut vous licencier sans motif", "is_correct": false, "display_order": 2},
+        {"choice_text": "Vous n'avez pas le droit de critiquer le gouvernement", "is_correct": false, "display_order": 3},
+        {"choice_text": "Seuls les fonctionnaires peuvent critiquer le gouvernement", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 15,
+      "theme_id": 3,
+      "subtheme_id": 6,
+      "type": "knowledge",
+      "difficulty": "medium",
+      "question_text": "Quelles sont les limites à la liberté d'expression en France ?",
+      "lesson_reference": "THEME_3_LESSON_42",
+      "explanation": "La liberté d'expression connaît des limites légales : interdiction de la diffamation, de l'injure, de l'incitation à la haine raciale, de l'apologie du terrorisme, du négationnisme, et de la diffusion de fausses informations. Ces limites visent à protéger l'ordre public et les droits d'autrui.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Diffamation, incitation à la haine, apologie du terrorisme", "is_correct": true, "display_order": 1},
+        {"choice_text": "Aucune limite, la liberté est absolue", "is_correct": false, "display_order": 2},
+        {"choice_text": "Toute critique du gouvernement est interdite", "is_correct": false, "display_order": 3},
+        {"choice_text": "Les opinions politiques sont interdites", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 16,
+      "theme_id": 3,
+      "subtheme_id": 7,
+      "type": "knowledge",
+      "difficulty": "easy",
+      "question_text": "Qu'est-ce que le droit de vote ?",
+      "lesson_reference": "THEME_3_LESSON_43",
+      "explanation": "Le droit de vote est le droit de participer aux élections pour choisir ses représentants. En France, c'est un droit universel : tout citoyen français majeur peut voter, sauf incapacité juridique. C'est aussi un devoir civique.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Le droit de participer aux élections et choisir ses représentants", "is_correct": true, "display_order": 1},
+        {"choice_text": "Le droit réservé aux hommes uniquement", "is_correct": false, "display_order": 2},
+        {"choice_text": "Le droit de se présenter aux élections", "is_correct": false, "display_order": 3},
+        {"choice_text": "Le droit de manifester", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 17,
+      "theme_id": 3,
+      "subtheme_id": 7,
+      "type": "practicalScenario",
+      "difficulty": "medium",
+      "question_text": "Un ami étranger résidant en France depuis 10 ans vous demande s'il peut voter aux élections présidentielles. Que lui répondez-vous ?",
+      "lesson_reference": "THEME_3_LESSON_43",
+      "explanation": "Pour voter aux élections présidentielles et législatives en France, il faut être citoyen français. Un étranger, même résident de longue durée, ne peut voter à ces élections. En revanche, les citoyens de l'Union européenne résidant en France peuvent voter aux élections municipales et européennes.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Non, seuls les citoyens français peuvent voter aux élections présidentielles", "is_correct": true, "display_order": 1},
+        {"choice_text": "Oui, après 10 ans de résidence il peut voter", "is_correct": false, "display_order": 2},
+        {"choice_text": "Oui, tous les résidents peuvent voter en France", "is_correct": false, "display_order": 3},
+        {"choice_text": "Non, il faut être né en France pour voter", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 18,
+      "theme_id": 3,
+      "subtheme_id": 7,
+      "type": "knowledge",
+      "difficulty": "hard",
+      "question_text": "À partir de quel âge peut-on voter en France ?",
+      "lesson_reference": "THEME_3_LESSON_43",
+      "explanation": "En France, le droit de vote est accordé à partir de 18 ans. Depuis 1974, l'âge de la majorité civile et électorale est fixé à 18 ans. Avant cette date, il était de 21 ans.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "18 ans", "is_correct": true, "display_order": 1},
+        {"choice_text": "16 ans", "is_correct": false, "display_order": 2},
+        {"choice_text": "21 ans", "is_correct": false, "display_order": 3},
+        {"choice_text": "25 ans", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 19,
+      "theme_id": 3,
+      "subtheme_id": 8,
+      "type": "knowledge",
+      "difficulty": "medium",
+      "question_text": "Qu'est-ce que l'égalité devant la loi ?",
+      "lesson_reference": "THEME_3_LESSON_44",
+      "explanation": "L'égalité devant la loi signifie que tous les citoyens ont les mêmes droits et sont soumis aux mêmes obligations, sans distinction d'origine, de race, de religion, de sexe ou de condition sociale. Ce principe est inscrit dans la Déclaration des droits de l'homme de 1789.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Tous les citoyens ont les mêmes droits sans discrimination", "is_correct": true, "display_order": 1},
+        {"choice_text": "Seuls les citoyens riches ont les mêmes droits", "is_correct": false, "display_order": 2},
+        {"choice_text": "Les hommes et les femmes n'ont pas les mêmes droits", "is_correct": false, "display_order": 3},
+        {"choice_text": "L'égalité dépend de l'origine sociale", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 20,
+      "theme_id": 3,
+      "subtheme_id": 8,
+      "type": "practicalScenario",
+      "difficulty": "hard",
+      "question_text": "Une entreprise refuse d'embaucher une personne en raison de son origine ethnique. Quelle protection juridique cette personne a-t-elle ?",
+      "lesson_reference": "THEME_3_LESSON_45",
+      "explanation": "La discrimination à l'embauche fondée sur l'origine ethnique est interdite par la loi. La victime peut saisir le Défenseur des droits, porter plainte au pénal pour discrimination (jusqu'à 3 ans de prison et 45 000€ d'amende), et engager une action devant le conseil de prud'hommes pour obtenir réparation.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Elle peut saisir le Défenseur des droits et porter plainte pour discrimination", "is_correct": true, "display_order": 1},
+        {"choice_text": "Elle n'a aucun recours, l'entreprise est libre", "is_correct": false, "display_order": 2},
+        {"choice_text": "Elle doit accepter la décision de l'entreprise", "is_correct": false, "display_order": 3},
+        {"choice_text": "Seul le gouvernement peut intervenir", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 21,
+      "theme_id": 4,
+      "subtheme_id": 9,
+      "type": "knowledge",
+      "difficulty": "easy",
+      "question_text": "En quelle année a eu lieu la Révolution française ?",
+      "lesson_reference": "THEME_4_LESSON_61",
+      "explanation": "La Révolution française a débuté en 1789 avec la prise de la Bastille le 14 juillet. Elle marque la fin de la monarchie absolue et l'avènement de la République.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "1789", "is_correct": true, "display_order": 1},
+        {"choice_text": "1776", "is_correct": false, "display_order": 2},
+        {"choice_text": "1804", "is_correct": false, "display_order": 3},
+        {"choice_text": "1830", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 22,
+      "theme_id": 4,
+      "subtheme_id": 9,
+      "type": "knowledge",
+      "difficulty": "medium",
+      "question_text": "Quel document fondamental a été adopté le 26 août 1789 ?",
+      "lesson_reference": "THEME_4_LESSON_61",
+      "explanation": "La Déclaration des droits de l'homme et du citoyen a été adoptée le 26 août 1789. Elle proclame les droits fondamentaux comme la liberté, l'égalité, la propriété et la résistance à l'oppression. Elle reste la base du droit constitutionnel français.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "La Déclaration des droits de l'homme et du citoyen", "is_correct": true, "display_order": 1},
+        {"choice_text": "La Constitution de la Ve République", "is_correct": false, "display_order": 2},
+        {"choice_text": "Le Code civil", "is_correct": false, "display_order": 3},
+        {"choice_text": "Le Traité de Versailles", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 23,
+      "theme_id": 4,
+      "subtheme_id": 9,
+      "type": "knowledge",
+      "difficulty": "hard",
+      "question_text": "Combien de Républiques la France a-t-elle connues depuis 1789 ?",
+      "lesson_reference": "THEME_4_LESSON_62",
+      "explanation": "La France a connu cinq Républiques depuis 1789 : la Ière République (1792-1804), la IIe République (1848-1852), la IIIe République (1870-1940), la IVe République (1946-1958), et la Ve République (depuis 1958).",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Cinq Républiques", "is_correct": true, "display_order": 1},
+        {"choice_text": "Trois Républiques", "is_correct": false, "display_order": 2},
+        {"choice_text": "Sept Républiques", "is_correct": false, "display_order": 3},
+        {"choice_text": "Deux Républiques", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 24,
+      "theme_id": 4,
+      "subtheme_id": 10,
+      "type": "knowledge",
+      "difficulty": "medium",
+      "question_text": "Qui a fondé la Ve République française ?",
+      "lesson_reference": "THEME_4_LESSON_63",
+      "explanation": "Charles de Gaulle a fondé la Ve République en 1958. La Constitution de la Ve République a été adoptée par référendum le 28 septembre 1958 et est toujours en vigueur aujourd'hui.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Charles de Gaulle", "is_correct": true, "display_order": 1},
+        {"choice_text": "Napoléon Bonaparte", "is_correct": false, "display_order": 2},
+        {"choice_text": "François Mitterrand", "is_correct": false, "display_order": 3},
+        {"choice_text": "Georges Pompidou", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 25,
+      "theme_id": 4,
+      "subtheme_id": 10,
+      "type": "knowledge",
+      "difficulty": "hard",
+      "question_text": "Quelle réforme importante de 1962 a renforcé le pouvoir présidentiel ?",
+      "lesson_reference": "THEME_4_LESSON_63",
+      "explanation": "La réforme de 1962 a instauré l'élection du Président de la République au suffrage universel direct. Auparavant, le Président était élu par un collège électoral. Cette réforme a considérablement renforcé la légitimité et le pouvoir présidentiel.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "L'élection du Président au suffrage universel direct", "is_correct": true, "display_order": 1},
+        {"choice_text": "La création du Sénat", "is_correct": false, "display_order": 2},
+        {"choice_text": "L'abolition de la peine de mort", "is_correct": false, "display_order": 3},
+        {"choice_text": "Le droit de vote des femmes", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 26,
+      "theme_id": 4,
+      "subtheme_id": 11,
+      "type": "knowledge",
+      "difficulty": "medium",
+      "question_text": "En quelle année les femmes ont-elles obtenu le droit de vote en France ?",
+      "lesson_reference": "THEME_4_LESSON_64",
+      "explanation": "Les femmes françaises ont obtenu le droit de vote en 1944 par ordonnance du gouvernement provisoire du général de Gaulle. Elles ont voté pour la première fois aux élections municipales d'avril 1945. La France était l'un des derniers pays d'Europe occidentale à accorder ce droit.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "1944", "is_correct": true, "display_order": 1},
+        {"choice_text": "1789", "is_correct": false, "display_order": 2},
+        {"choice_text": "1920", "is_correct": false, "display_order": 3},
+        {"choice_text": "1968", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 27,
+      "theme_id": 4,
+      "subtheme_id": 11,
+      "type": "knowledge",
+      "difficulty": "easy",
+      "question_text": "Quel est l'hymne national français ?",
+      "lesson_reference": "THEME_4_LESSON_65",
+      "explanation": "La Marseillaise est l'hymne national français depuis 1795. Composée par Rouget de Lisle en 1792, elle est devenue le symbole de la République française et de la liberté.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "La Marseillaise", "is_correct": true, "display_order": 1},
+        {"choice_text": "Le Chant des Partisans", "is_correct": false, "display_order": 2},
+        {"choice_text": "La Strasbourgeoise", "is_correct": false, "display_order": 3},
+        {"choice_text": "L'Internationale", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 28,
+      "theme_id": 4,
+      "subtheme_id": 11,
+      "type": "knowledge",
+      "difficulty": "hard",
+      "question_text": "Quel événement historique a marqué la fin de la IVe République ?",
+      "lesson_reference": "THEME_4_LESSON_66",
+      "explanation": "La crise algérienne et le coup d'État militaire du 13 mai 1958 ont marqué la fin de la IVe République. Face à l'instabilité politique et à la guerre d'Algérie, le général de Gaulle a été rappelé au pouvoir et a fondé la Ve République.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "La crise algérienne et le coup d'État du 13 mai 1958", "is_correct": true, "display_order": 1},
+        {"choice_text": "La Seconde Guerre mondiale", "is_correct": false, "display_order": 2},
+        {"choice_text": "La Révolution de 1848", "is_correct": false, "display_order": 3},
+        {"choice_text": "Mai 68", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 29,
+      "theme_id": 5,
+      "subtheme_id": 12,
+      "type": "knowledge",
+      "difficulty": "easy",
+      "question_text": "Qu'est-ce que la sécurité sociale en France ?",
+      "lesson_reference": "THEME_5_LESSON_81",
+      "explanation": "La sécurité sociale est un système de protection sociale qui couvre les risques de la vie : maladie, accidents du travail, retraite, famille. Elle a été créée en 1945 et repose sur le principe de solidarité nationale.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Un système de protection sociale couvrant maladie, retraite, famille", "is_correct": true, "display_order": 1},
+        {"choice_text": "Une police d'assurance privée", "is_correct": false, "display_order": 2},
+        {"choice_text": "Un service de sécurité publique", "is_correct": false, "display_order": 3},
+        {"choice_text": "Un système réservé aux fonctionnaires", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 30,
+      "theme_id": 5,
+      "subtheme_id": 12,
+      "type": "practicalScenario",
+      "difficulty": "medium",
+      "question_text": "Vous venez de commencer un nouveau travail. Quelles sont vos obligations en matière de sécurité sociale ?",
+      "lesson_reference": "THEME_5_LESSON_81",
+      "explanation": "En tant que salarié, vous êtes automatiquement affilié au régime général de la sécurité sociale. Votre employeur doit vous déclarer et verser les cotisations sociales. Vous devez vous procurer une carte Vitale et choisir un médecin traitant pour bénéficier d'un meilleur remboursement.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Vous êtes automatiquement affilié, l'employeur verse les cotisations", "is_correct": true, "display_order": 1},
+        {"choice_text": "Vous devez souscrire une assurance privée obligatoire", "is_correct": false, "display_order": 2},
+        {"choice_text": "Seuls les CDI sont couverts par la sécurité sociale", "is_correct": false, "display_order": 3},
+        {"choice_text": "Vous devez payer une cotisation mensuelle directement", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 31,
+      "theme_id": 5,
+      "subtheme_id": 13,
+      "type": "knowledge",
+      "difficulty": "medium",
+      "question_text": "Qu'est-ce que le service public en France ?",
+      "lesson_reference": "THEME_5_LESSON_82",
+      "explanation": "Le service public désigne une activité d'intérêt général assurée par l'État ou une collectivité publique. Il repose sur trois principes : continuité, égalité d'accès et adaptabilité. Les services publics incluent l'éducation, la santé, la justice, les transports, etc.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Une activité d'intérêt général assurée par l'État", "is_correct": true, "display_order": 1},
+        {"choice_text": "Une entreprise privée qui paie des impôts", "is_correct": false, "display_order": 2},
+        {"choice_text": "Un service réservé aux fonctionnaires", "is_correct": false, "display_order": 3},
+        {"choice_text": "Un service gratuit pour tous", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 32,
+      "theme_id": 5,
+      "subtheme_id": 13,
+      "type": "knowledge",
+      "difficulty": "easy",
+      "question_text": "Quel est le numéro d'urgence européen ?",
+      "lesson_reference": "THEME_5_LESSON_83",
+      "explanation": "Le 112 est le numéro d'urgence européen gratuit, accessible depuis tous les pays de l'Union européenne. Il permet de joindre les services d'urgence (police, pompiers, SAMU) depuis un téléphone fixe ou mobile.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "112", "is_correct": true, "display_order": 1},
+        {"choice_text": "999", "is_correct": false, "display_order": 2},
+        {"choice_text": "911", "is_correct": false, "display_order": 3},
+        {"choice_text": "117", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 33,
+      "theme_id": 5,
+      "subtheme_id": 14,
+      "type": "practicalScenario",
+      "difficulty": "medium",
+      "question_text": "Vous êtes témoin d'une discrimination dans un magasin. Que pouvez-vous faire ?",
+      "lesson_reference": "THEME_5_LESSON_84",
+      "explanation": "En tant que témoin de discrimination, vous pouvez alerter le Défenseur des droits, témoigner si la victime porte plainte, ou contacter une association de lutte contre les discriminations. La discrimination est un délit puni par la loi.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Alerter le Défenseur des droits et témoigner", "is_correct": true, "display_order": 1},
+        {"choice_text": "Ne rien faire, ce n'est pas votre problème", "is_correct": false, "display_order": 2},
+        {"choice_text": "Confronter le discriminateur physiquement", "is_correct": false, "display_order": 3},
+        {"choice_text": "Poster sur les réseaux sociaux uniquement", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 34,
+      "theme_id": 5,
+      "subtheme_id": 14,
+      "type": "knowledge",
+      "difficulty": "hard",
+      "question_text": "Qu'est-ce que le Défenseur des droits ?",
+      "lesson_reference": "THEME_5_LESSON_85",
+      "explanation": "Le Défenseur des droits est une autorité administrative indépendante créée en 2011. Il défend les droits et libertés individuelles, lutte contre les discriminations, et veille au respect de la déontologie des forces de sécurité. Toute personne peut le saisir gratuitement.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Une autorité indépendante qui défend les droits et libertés", "is_correct": true, "display_order": 1},
+        {"choice_text": "Un avocat commis d'office", "is_correct": false, "display_order": 2},
+        {"choice_text": "Un juge spécialisé", "is_correct": false, "display_order": 3},
+        {"choice_text": "Un policier chargé des plaintes", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 35,
+      "theme_id": 1,
+      "subtheme_id": 1,
+      "type": "practicalScenario",
+      "difficulty": "hard",
+      "question_text": "Un maire souhaite installer une crèche de Noël dans la mairie. Est-ce compatible avec le principe de laïcité ?",
+      "lesson_reference": "THEME_1_LESSON_2",
+      "explanation": "La question est complexe. Le Conseil d'État a jugé que l'installation d'une crèche dans un bâtiment public n'est possible que si elle présente un caractère culturel, artistique ou festif, et non cultuel. Il faut analyser le contexte : une crèche dans un musée est acceptable, dans un hall de mairie c'est plus discutable.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Cela dépend du contexte : acceptable si caractère culturel, non si cultuel", "is_correct": true, "display_order": 1},
+        {"choice_text": "Oui, Noël est une fête nationale", "is_correct": false, "display_order": 2},
+        {"choice_text": "Non, absolument interdit dans tous les cas", "is_correct": false, "display_order": 3},
+        {"choice_text": "Oui, le maire décide librement", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 36,
+      "theme_id": 2,
+      "subtheme_id": 5,
+      "type": "practicalScenario",
+      "difficulty": "hard",
+      "question_text": "Une loi vient d'être votée par l'Assemblée et le Sénat. Vous pensez qu'elle est contraire à la Constitution. Que pouvez-vous faire ?",
+      "lesson_reference": "THEME_2_LESSON_25",
+      "explanation": "Avant la promulgation, 60 députés ou 60 sénateurs peuvent saisir le Conseil constitutionnel pour un contrôle a priori. Après la promulgation, tout justiciable peut soulever une Question Prioritaire de Constitutionnalité (QPC) lors d'un procès si la loi porte atteinte à ses droits. Un simple citoyen ne peut pas saisir directement le Conseil constitutionnel.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Soulever une QPC lors d'un procès si la loi vous affecte", "is_correct": true, "display_order": 1},
+        {"choice_text": "Saisir directement le Conseil constitutionnel", "is_correct": false, "display_order": 2},
+        {"choice_text": "Organiser un référendum populaire", "is_correct": false, "display_order": 3},
+        {"choice_text": "Rien, la loi est définitive", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 37,
+      "theme_id": 3,
+      "subtheme_id": 8,
+      "type": "practicalScenario",
+      "difficulty": "hard",
+      "question_text": "Vous êtes handicapé et un établissement refuse de vous accueillir en raison de votre handicap. Quels sont vos droits ?",
+      "lesson_reference": "THEME_3_LESSON_45",
+      "explanation": "La loi oblige les établissements recevant du public (ERP) à être accessibles aux personnes handicapées. Le refus d'accès constitue une discrimination punissable par la loi. Vous pouvez saisir le Défenseur des droits, porter plainte pour discrimination, et exiger la mise en conformité de l'établissement.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Saisir le Défenseur des droits et porter plainte pour discrimination", "is_correct": true, "display_order": 1},
+        {"choice_text": "Accepter, l'établissement a le droit de refuser", "is_correct": false, "display_order": 2},
+        {"choice_text": "Changer d'établissement sans rien dire", "is_correct": false, "display_order": 3},
+        {"choice_text": "Attendre que l'établissement se mette en conformité volontairement", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 38,
+      "theme_id": 1,
+      "subtheme_id": 2,
+      "type": "knowledge",
+      "difficulty": "medium",
+      "question_text": "Quel article de la Constitution définit la France comme une République indivisible, laïque, démocratique et sociale ?",
+      "lesson_reference": "THEME_1_LESSON_1",
+      "explanation": "C'est l'article 1er de la Constitution de 1958 qui définit les principes fondamentaux de la République française : 'La France est une République indivisible, laïque, démocratique et sociale.'",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Article 1er", "is_correct": true, "display_order": 1},
+        {"choice_text": "Article 2", "is_correct": false, "display_order": 2},
+        {"choice_text": "Article 5", "is_correct": false, "display_order": 3},
+        {"choice_text": "Article 89", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 39,
+      "theme_id": 2,
+      "subtheme_id": 3,
+      "type": "practicalScenario",
+      "difficulty": "medium",
+      "question_text": "Le Président de la République et la majorité parlementaire sont de bords politiques opposés. Comment appelle-t-on cette situation ?",
+      "lesson_reference": "THEME_2_LESSON_22",
+      "explanation": "Cette situation est appelée 'cohabitation'. Elle s'est produite trois fois sous la Ve République : 1986-1988 (Mitterrand-Chirac), 1993-1995 (Mitterrand-Balladur), et 1997-2002 (Chirac-Jospin). Le Premier ministre issu de la majorité parlementaire conduit alors la politique intérieure.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Cohabitation", "is_correct": true, "display_order": 1},
+        {"choice_text": "Coalition", "is_correct": false, "display_order": 2},
+        {"choice_text": "Alternance", "is_correct": false, "display_order": 3},
+        {"choice_text": "Bicéphalisme", "is_correct": false, "display_order": 4}
+      ]
+    },
+    {
+      "id": 40,
+      "theme_id": 5,
+      "subtheme_id": 12,
+      "type": "knowledge",
+      "difficulty": "hard",
+      "question_text": "Quel est le taux de cotisation sociale approximatif en France (part salarié + employeur) ?",
+      "lesson_reference": "THEME_5_LESSON_81",
+      "explanation": "En France, les cotisations sociales représentent environ 60 à 65% du salaire brut (en comptant les parts salarié et employeur). C'est ce qui finance la sécurité sociale, les retraites, l'assurance chômage, etc. La France a l'un des taux de prélèvement les plus élevés d'Europe.",
+      "is_public": true,
+      "choices": [
+        {"choice_text": "Environ 60-65% du salaire brut", "is_correct": true, "display_order": 1},
+        {"choice_text": "Environ 20% du salaire brut", "is_correct": false, "display_order": 2},
+        {"choice_text": "Environ 10% du salaire brut", "is_correct": false, "display_order": 3},
+        {"choice_text": "Environ 90% du salaire brut", "is_correct": false, "display_order": 4}
+      ]
+    }
+  ]
+}
