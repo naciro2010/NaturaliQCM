@@ -17,6 +17,10 @@ import '../../ui/screens/history/history_screen.dart';
 import '../../ui/screens/history/session_detail_screen.dart';
 import '../../ui/screens/exam/exam_screen.dart';
 import '../../ui/screens/exam/exam_results_screen.dart';
+import '../../ui/screens/settings/settings_screen.dart';
+import '../../ui/screens/settings/privacy_policy_screen.dart';
+import '../../ui/screens/settings/terms_screen.dart';
+import '../../ui/screens/settings/compliance_screen.dart';
 
 /// Configuration du routeur de l'application avec GoRouter
 class AppRouter {
@@ -147,11 +151,32 @@ class AppRouter {
           },
         ),
 
-        // Settings (placeholder for future)
+        // Settings
         GoRoute(
           path: '/settings',
           name: 'settings',
-          builder: (context, state) => const Placeholder(),
+          builder: (context, state) => const SettingsScreen(),
+        ),
+
+        // Privacy Policy
+        GoRoute(
+          path: '/settings/privacy',
+          name: 'privacy-policy',
+          builder: (context, state) => const PrivacyPolicyScreen(),
+        ),
+
+        // Terms of Service
+        GoRoute(
+          path: '/settings/terms',
+          name: 'terms',
+          builder: (context, state) => const TermsScreen(),
+        ),
+
+        // Compliance
+        GoRoute(
+          path: '/settings/compliance',
+          name: 'compliance',
+          builder: (context, state) => const ComplianceScreen(),
         ),
       ],
 
