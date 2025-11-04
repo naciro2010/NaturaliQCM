@@ -7,6 +7,12 @@ import '../../ui/screens/splash_screen.dart';
 import '../../ui/screens/onboarding/onboarding_screen.dart';
 import '../../ui/screens/auth/profile_creation_screen.dart';
 import '../../ui/screens/home/home_screen.dart';
+import '../../ui/screens/lessons/lessons_screen.dart';
+import '../../ui/screens/lessons/theme_lessons_screen.dart';
+import '../../ui/screens/lessons/lesson_detail_screen.dart';
+import '../../ui/screens/training/training_screen.dart';
+import '../../ui/screens/training/training_session_screen.dart';
+import '../../ui/screens/training/statistics_screen.dart';
 
 /// Configuration du routeur de l'application avec GoRouter
 class AppRouter {
@@ -46,11 +52,29 @@ class AppRouter {
           builder: (context, state) => const HomeScreen(),
         ),
 
-        // Training Mode (placeholder for future)
+        // Training Mode
         GoRoute(
           path: '/training',
           name: 'training',
-          builder: (context, state) => const Placeholder(),
+          builder: (context, state) => const TrainingScreen(),
+        ),
+
+        // Training Session
+        GoRoute(
+          path: '/training/session',
+          name: 'training-session',
+          builder: (context, state) {
+            final themeIdStr = state.uri.queryParameters['themeId'];
+            final themeId = themeIdStr != null ? int.tryParse(themeIdStr) : null;
+            return TrainingSessionScreen(themeId: themeId);
+          },
+        ),
+
+        // Training Statistics
+        GoRoute(
+          path: '/training/statistics',
+          name: 'training-statistics',
+          builder: (context, state) => const StatisticsScreen(),
         ),
 
         // Exam Mode (placeholder for future)
@@ -60,11 +84,31 @@ class AppRouter {
           builder: (context, state) => const Placeholder(),
         ),
 
-        // Lessons (placeholder for future)
+        // Lessons
         GoRoute(
           path: '/lessons',
           name: 'lessons',
-          builder: (context, state) => const Placeholder(),
+          builder: (context, state) => const LessonsScreen(),
+        ),
+
+        // Theme Lessons
+        GoRoute(
+          path: '/lessons/theme/:themeId',
+          name: 'theme-lessons',
+          builder: (context, state) {
+            final themeId = int.parse(state.pathParameters['themeId']!);
+            return ThemeLessonsScreen(themeId: themeId);
+          },
+        ),
+
+        // Lesson Detail
+        GoRoute(
+          path: '/lessons/detail/:lessonId',
+          name: 'lesson-detail',
+          builder: (context, state) {
+            final lessonId = int.parse(state.pathParameters['lessonId']!);
+            return LessonDetailScreen(lessonId: lessonId);
+          },
         ),
 
         // History & Statistics (placeholder for future)

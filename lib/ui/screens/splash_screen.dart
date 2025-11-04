@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/database_helper.dart';
+import '../../data/lesson_repository.dart';
 
 /// Écran de chargement initial
 class SplashScreen extends StatefulWidget {
@@ -24,6 +25,10 @@ class _SplashScreenState extends State<SplashScreen> {
       // Initialiser la base de données
       final db = DatabaseHelper.instance;
       await db.database; // Force l'initialisation
+
+      // Charger les leçons depuis le fichier JSON
+      final lessonRepo = LessonRepository();
+      await lessonRepo.loadLessonsFromAssets();
 
       // Attendre un minimum de temps pour l'effet splash
       await Future.delayed(const Duration(milliseconds: 1500));

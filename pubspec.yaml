@@ -26,6 +26,7 @@ dependencies:
   # UI & utilities
   intl: ^0.19.0
   cupertino_icons: ^1.0.6
+  flutter_markdown: ^0.6.18
 
   # Biometric authentication
   local_auth: ^2.2.0
@@ -53,6 +54,7 @@ flutter:
     - assets/content/
     - assets/questions/
     - assets/images/
+    - assets/data/
 
   fonts:
     - family: Marianne

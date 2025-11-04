@@ -158,6 +158,20 @@ class DatabaseHelper {
       )
     ''');
 
+    await db.execute('''
+      CREATE TABLE lesson_progress (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id INTEGER NOT NULL,
+        lesson_id INTEGER NOT NULL,
+        started_at TEXT NOT NULL,
+        completed_at TEXT,
+        is_completed INTEGER NOT NULL DEFAULT 0,
+        FOREIGN KEY (user_id) REFERENCES user_profiles (id) ON DELETE CASCADE,
+        FOREIGN KEY (lesson_id) REFERENCES lessons (id) ON DELETE CASCADE,
+        UNIQUE(user_id, lesson_id)
+      )
+    ''');
+
     // Indexes pour performance
     await db.execute(
         'CREATE INDEX idx_questions_theme ON questions(theme_id, type)');
@@ -168,6 +182,8 @@ class DatabaseHelper {
     await db.execute(
         'CREATE INDEX idx_user_progress_user_next_review ON user_progress(user_id, next_review_at)');
     await db.execute('CREATE INDEX idx_choices_question ON choices(question_id)');
+    await db.execute('CREATE INDEX idx_lessons_theme ON lessons(theme_id, display_order)');
+    await db.execute('CREATE INDEX idx_lesson_progress_user ON lesson_progress(user_id, lesson_id)');
   }
 
   Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
