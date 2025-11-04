@@ -13,6 +13,10 @@ import '../../ui/screens/lessons/lesson_detail_screen.dart';
 import '../../ui/screens/training/training_screen.dart';
 import '../../ui/screens/training/training_session_screen.dart';
 import '../../ui/screens/training/statistics_screen.dart';
+import '../../ui/screens/history/history_screen.dart';
+import '../../ui/screens/history/session_detail_screen.dart';
+import '../../ui/screens/exam/exam_screen.dart';
+import '../../ui/screens/exam/exam_results_screen.dart';
 
 /// Configuration du routeur de l'application avec GoRouter
 class AppRouter {
@@ -77,11 +81,26 @@ class AppRouter {
           builder: (context, state) => const StatisticsScreen(),
         ),
 
-        // Exam Mode (placeholder for future)
+        // Exam Mode
         GoRoute(
           path: '/exam',
           name: 'exam',
-          builder: (context, state) => const Placeholder(),
+          builder: (context, state) => const ExamScreen(),
+        ),
+
+        // Exam Results
+        GoRoute(
+          path: '/exam/results/:sessionId',
+          name: 'exam-results',
+          builder: (context, state) {
+            final sessionId = int.parse(state.pathParameters['sessionId']!);
+            final extra = state.extra as Map<String, dynamic>?;
+            final isTimeout = extra?['isTimeout'] as bool? ?? false;
+            return ExamResultsScreen(
+              sessionId: sessionId,
+              isTimeout: isTimeout,
+            );
+          },
         ),
 
         // Lessons
@@ -111,11 +130,21 @@ class AppRouter {
           },
         ),
 
-        // History & Statistics (placeholder for future)
+        // History & Statistics
         GoRoute(
           path: '/history',
           name: 'history',
-          builder: (context, state) => const Placeholder(),
+          builder: (context, state) => const HistoryScreen(),
+        ),
+
+        // Session Detail
+        GoRoute(
+          path: '/history/session/:sessionId',
+          name: 'session-detail',
+          builder: (context, state) {
+            final sessionId = int.parse(state.pathParameters['sessionId']!);
+            return SessionDetailScreen(sessionId: sessionId);
+          },
         ),
 
         // Settings (placeholder for future)
