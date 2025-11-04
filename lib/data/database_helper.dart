@@ -194,4 +194,35 @@ class DatabaseHelper {
     await db.close();
     _database = null;
   }
+
+  /// Vérifie si un profil utilisateur existe
+  Future<bool> hasUserProfile() async {
+    final db = await database;
+    final result = await db.query('user_profiles', limit: 1);
+    return result.isNotEmpty;
+  }
+
+  /// Récupère le profil utilisateur (on suppose un seul profil pour cette version)
+  Future<Map<String, dynamic>?> getUserProfile() async {
+    final db = await database;
+    final result = await db.query('user_profiles', limit: 1);
+    return result.isNotEmpty ? result.first : null;
+  }
+
+  /// Crée un nouveau profil utilisateur
+  Future<int> createUserProfile(Map<String, dynamic> profile) async {
+    final db = await database;
+    return await db.insert('user_profiles', profile);
+  }
+
+  /// Met à jour le profil utilisateur
+  Future<int> updateUserProfile(int id, Map<String, dynamic> profile) async {
+    final db = await database;
+    return await db.update(
+      'user_profiles',
+      profile,
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
 }
