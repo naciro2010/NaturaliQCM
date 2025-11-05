@@ -1,0 +1,8 @@
+# Exemple de configuration pour la signature Android
+# Copier ce fichier en key.properties et remplir avec vos valeurs
+# ATTENTION: Ne jamais commiter key.properties (il est dans .gitignore)
+
+storePassword=votre_mot_de_passe_keystore
+keyPassword=votre_mot_de_passe_cle
+keyAlias=naturaliqcm
+storeFile=keystore.jks

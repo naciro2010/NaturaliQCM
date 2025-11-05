@@ -1,0 +1,108 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Build debug version"
+  lane :debug do
+    build_app(
+      workspace: "Runner.xcworkspace",
+      scheme: "Runner",
+      configuration: "Debug",
+      export_method: "development",
+      skip_codesigning: true
+    )
+  end
+
+  desc "Build release version"
+  lane :build_release do
+    setup_ci if ENV['CI']
+
+    match(
+      type: "appstore",
+      readonly: true
+    )
+
+    build_app(
+      workspace: "Runner.xcworkspace",
+      scheme: "Runner",
+      configuration: "Release",
+      export_method: "app-store"
+    )
+  end
+
+  desc "Upload to TestFlight"
+  lane :beta do
+    setup_ci if ENV['CI']
+
+    # Sync certificates
+    match(
+      type: "appstore",
+      readonly: true
+    )
+
+    # Increment build number
+    increment_build_number(
+      build_number: latest_testflight_build_number + 1,
+      xcodeproj: "Runner.xcodeproj"
+    )
+
+    # Build the app
+    build_app(
+      workspace: "Runner.xcworkspace",
+      scheme: "Runner",
+      configuration: "Release",
+      export_method: "app-store"
+    )
+
+    # Upload to TestFlight
+    upload_to_testflight(
+      skip_waiting_for_build_processing: false,
+      distribute_external: false,
+      notify_external_testers: false
+    )
+  end
+
+  desc "Deploy to App Store"
+  lane :production do
+    setup_ci if ENV['CI']
+
+    # Sync certificates
+    match(
+      type: "appstore",
+      readonly: true
+    )
+
+    # Increment build number
+    increment_build_number(
+      build_number: latest_testflight_build_number + 1,
+      xcodeproj: "Runner.xcodeproj"
+    )
+
+    # Build the app
+    build_app(
+      workspace: "Runner.xcworkspace",
+      scheme: "Runner",
+      configuration: "Release",
+      export_method: "app-store"
+    )
+
+    # Upload to App Store
+    upload_to_app_store(
+      skip_metadata: false,
+      skip_screenshots: false,
+      submit_for_review: false,
+      automatic_release: false
+    )
+  end
+
+  desc "Download certificates and provisioning profiles"
+  lane :certificates do
+    match(
+      type: "development",
+      readonly: true
+    )
+    match(
+      type: "appstore",
+      readonly: true
+    )
+  end
+end
