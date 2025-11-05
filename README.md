@@ -164,14 +164,57 @@ Pour toute question ou assistance :
 
 - [x] **Lot 0** : Fondations (repo, CI, qualité)
 - [x] **Lot 1** : Modèle de données & moteur QCM
-- [ ] **Lot 2** : UX de base & navigation
-- [ ] **Lot 3** : Profils & authentification
-- [ ] **Lot 4** : Cours & référentiel
-- [ ] **Lot 5** : Entraînement adaptatif
-- [ ] **Lot 6** : Mode examen officiel
-- [ ] **Lot 7** : Historique & analytics locaux
+- [x] **Lot 2** : UX de base & navigation
+- [x] **Lot 3** : Profils & authentification
+- [x] **Lot 4** : Cours & référentiel
+- [x] **Lot 5** : Entraînement adaptatif
+- [x] **Lot 6** : Mode examen officiel
+- [x] **Lot 7** : Historique & analytics locaux
 - [ ] **Lot 8** : Packaging & déploiement
-- [ ] **Lot 9** : Conformité & maintenance
+- [x] **Lot 9** : Conformité & maintenance
+
+## ✨ Fonctionnalités implémentées
+
+### 🎓 Mode Examen Officiel
+- Timer de 45 minutes avec compte à rebours
+- 40 questions conformes à la distribution réglementaire
+- Navigation entre questions avec révision avant soumission
+- Résultats détaillés avec breakdown par thème
+- Génération d'attestation PDF pour examens réussis
+- Validation automatique de la conformité
+
+### 📊 Historique & Statistiques
+- Liste complète des sessions d'examen
+- Filtres (toutes/réussies/échouées)
+- Statistiques globales (taux de réussite, meilleur score, score moyen)
+- Détails de session avec toutes les réponses et explications
+- Analyse de performance par thème
+
+### 🎯 Entraînement Adaptatif
+- Algorithme de répétition espacée (système Leitner)
+- Sessions d'entraînement ciblées par thème
+- Progression personnalisée
+- Statistiques détaillées par thème
+
+### 📚 Cours & Leçons
+- Contenu éducatif pour les 5 thèmes
+- Leçons organisées par sous-thèmes
+- Suivi de progression des leçons
+- Liens entre questions et leçons
+
+### ⚙️ Paramètres & Conformité RGPD
+- Export complet des données (CSV)
+- Suppression totale des données
+- Politique de confidentialité détaillée
+- Conditions d'utilisation
+- Informations de conformité réglementaire
+- 100% offline - zéro collecte de données
+
+### 🔐 Sécurité & Authentification
+- Authentification biométrique (FaceID/TouchID)
+- Support Passkeys et Sign in with Apple
+- Base de données chiffrée localement
+- Stockage sécurisé (Keychain/Keystore)
 
 ---
 

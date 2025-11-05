@@ -13,6 +13,14 @@ import '../../ui/screens/lessons/lesson_detail_screen.dart';
 import '../../ui/screens/training/training_screen.dart';
 import '../../ui/screens/training/training_session_screen.dart';
 import '../../ui/screens/training/statistics_screen.dart';
+import '../../ui/screens/history/history_screen.dart';
+import '../../ui/screens/history/session_detail_screen.dart';
+import '../../ui/screens/exam/exam_screen.dart';
+import '../../ui/screens/exam/exam_results_screen.dart';
+import '../../ui/screens/settings/settings_screen.dart';
+import '../../ui/screens/settings/privacy_policy_screen.dart';
+import '../../ui/screens/settings/terms_screen.dart';
+import '../../ui/screens/settings/compliance_screen.dart';
 
 /// Configuration du routeur de l'application avec GoRouter
 class AppRouter {
@@ -77,11 +85,26 @@ class AppRouter {
           builder: (context, state) => const StatisticsScreen(),
         ),
 
-        // Exam Mode (placeholder for future)
+        // Exam Mode
         GoRoute(
           path: '/exam',
           name: 'exam',
-          builder: (context, state) => const Placeholder(),
+          builder: (context, state) => const ExamScreen(),
+        ),
+
+        // Exam Results
+        GoRoute(
+          path: '/exam/results/:sessionId',
+          name: 'exam-results',
+          builder: (context, state) {
+            final sessionId = int.parse(state.pathParameters['sessionId']!);
+            final extra = state.extra as Map<String, dynamic>?;
+            final isTimeout = extra?['isTimeout'] as bool? ?? false;
+            return ExamResultsScreen(
+              sessionId: sessionId,
+              isTimeout: isTimeout,
+            );
+          },
         ),
 
         // Lessons
@@ -111,18 +134,49 @@ class AppRouter {
           },
         ),
 
-        // History & Statistics (placeholder for future)
+        // History & Statistics
         GoRoute(
           path: '/history',
           name: 'history',
-          builder: (context, state) => const Placeholder(),
+          builder: (context, state) => const HistoryScreen(),
         ),
 
-        // Settings (placeholder for future)
+        // Session Detail
+        GoRoute(
+          path: '/history/session/:sessionId',
+          name: 'session-detail',
+          builder: (context, state) {
+            final sessionId = int.parse(state.pathParameters['sessionId']!);
+            return SessionDetailScreen(sessionId: sessionId);
+          },
+        ),
+
+        // Settings
         GoRoute(
           path: '/settings',
           name: 'settings',
-          builder: (context, state) => const Placeholder(),
+          builder: (context, state) => const SettingsScreen(),
+        ),
+
+        // Privacy Policy
+        GoRoute(
+          path: '/settings/privacy',
+          name: 'privacy-policy',
+          builder: (context, state) => const PrivacyPolicyScreen(),
+        ),
+
+        // Terms of Service
+        GoRoute(
+          path: '/settings/terms',
+          name: 'terms',
+          builder: (context, state) => const TermsScreen(),
+        ),
+
+        // Compliance
+        GoRoute(
+          path: '/settings/compliance',
+          name: 'compliance',
+          builder: (context, state) => const ComplianceScreen(),
         ),
       ],
 

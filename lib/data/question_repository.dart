@@ -255,4 +255,77 @@ class QuestionRepository {
     }
     return questions;
   }
+
+  /// Génère un examen officiel conforme à l'arrêté du 10 octobre 2025
+  /// Distribution: Principes 11 (6 MS), Institutions 6, Droits 11 (6 MS), Histoire 8, Vivre 4
+  /// Total: 40 questions (dont 12 mises en situation)
+  Future<List<QuestionModel>> generateOfficialExam() async {
+    final db = await _dbHelper.database;
+    final List<QuestionModel> examQuestions = [];
+
+    // Distribution réglementaire par thème
+    // themeId: {total, practicalScenario}
+    final distribution = {
+      1: {'total': 11, 'practicalScenario': 6}, // Principes et valeurs
+      2: {'total': 6, 'practicalScenario': 0},  // Institutions
+      3: {'total': 11, 'practicalScenario': 6}, // Droits et devoirs
+      4: {'total': 8, 'practicalScenario': 0},  // Histoire, culture
+      5: {'total': 4, 'practicalScenario': 0},  // Vivre en France
+    };
+
+    for (var themeId in distribution.keys) {
+      final themeDistribution = distribution[themeId]!;
+      final totalQuestions = themeDistribution['total'] as int;
+      final practicalScenarioCount = themeDistribution['practicalScenario'] as int;
+      final knowledgeCount = totalQuestions - practicalScenarioCount;
+
+      // Récupérer les questions de mise en situation
+      if (practicalScenarioCount > 0) {
+        final practicalQuestions = await db.query(
+          'questions',
+          where: 'theme_id = ? AND type = ?',
+          whereArgs: [themeId, 'practicalScenario'],
+          orderBy: 'RANDOM()',
+          limit: practicalScenarioCount,
+        );
+
+        for (var questionMap in practicalQuestions) {
+          final question = await getQuestionById(questionMap['id'] as int);
+          if (question != null) {
+            examQuestions.add(question);
+          }
+        }
+      }
+
+      // Récupérer les questions de connaissance
+      if (knowledgeCount > 0) {
+        final knowledgeQuestions = await db.query(
+          'questions',
+          where: 'theme_id = ? AND type = ?',
+          whereArgs: [themeId, 'knowledge'],
+          orderBy: 'RANDOM()',
+          limit: knowledgeCount,
+        );
+
+        for (var questionMap in knowledgeQuestions) {
+          final question = await getQuestionById(questionMap['id'] as int);
+          if (question != null) {
+            examQuestions.add(question);
+          }
+        }
+      }
+    }
+
+    // Vérifier qu'on a bien 40 questions
+    if (examQuestions.length != 40) {
+      throw Exception(
+        'Impossible de générer un examen conforme: seulement ${examQuestions.length} questions disponibles'
+      );
+    }
+
+    // Mélanger les questions pour l'examen
+    examQuestions.shuffle();
+
+    return examQuestions;
+  }
 }
