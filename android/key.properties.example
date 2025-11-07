@@ -1,8 +1,22 @@
-# Exemple de configuration pour la signature Android
-# Copier ce fichier en key.properties et remplir avec vos valeurs
-# ATTENTION: Ne jamais commiter key.properties (il est dans .gitignore)
+# Android Keystore Configuration
+#
+# IMPORTANT: Ce fichier est un exemple. Créez un fichier 'key.properties'
+# (sans .example) avec vos vraies valeurs. Le fichier key.properties ne doit
+# JAMAIS être commité dans Git (il est dans .gitignore).
+#
+# Pour créer un keystore:
+# keytool -genkey -v -keystore keystore.jks \
+#   -keyalg RSA -keysize 2048 -validity 10000 \
+#   -alias naturaliqcm
 
-storePassword=votre_mot_de_passe_keystore
-keyPassword=votre_mot_de_passe_cle
+# Mot de passe du keystore
+storePassword=YOUR_KEYSTORE_PASSWORD
+
+# Mot de passe de la clé
+keyPassword=YOUR_KEY_PASSWORD
+
+# Alias de la clé (nom de la clé dans le keystore)
 keyAlias=naturaliqcm
+
+# Chemin vers le fichier keystore (relatif à android/)
 storeFile=keystore.jks

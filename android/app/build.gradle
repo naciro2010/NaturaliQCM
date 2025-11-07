@@ -22,8 +22,17 @@ if (flutterVersionName == null) {
     flutterVersionName = '0.1.0'
 }
 
+// Load keystore configuration for release builds
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystorePropertiesFile.withReader('UTF-8') { reader ->
+        keystoreProperties.load(reader)
+    }
+}
+
 android {
-    namespace "com.naturaliqcm.app"
+    namespace "fr.naturalisation.qcm"
     compileSdk 34
     ndkVersion "25.1.8937393"
 
@@ -37,7 +46,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.naturaliqcm.app"
+        applicationId "fr.naturalisation.qcm"
         minSdk 23
         targetSdk 34
         versionCode flutterVersionCode.toInteger()
@@ -48,11 +57,20 @@ android {
         shrinkResources false
     }
 
+    signingConfigs {
+        release {
+            if (keystorePropertiesFile.exists()) {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+            }
+        }
+    }
+
     buildTypes {
         release {
-            signingConfig signingConfigs.debug
-            // TODO: Configure proper signing for release builds
-            // signingConfig signingConfigs.release
+            signingConfig keystorePropertiesFile.exists() ? signingConfigs.release : signingConfigs.debug
 
             minifyEnabled true
             shrinkResources true
