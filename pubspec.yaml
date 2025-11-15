@@ -60,12 +60,15 @@ flutter:
     - assets/images/
     - assets/data/
 
-  fonts:
-    - family: Marianne
-      fonts:
-        - asset: assets/fonts/Marianne-Regular.ttf
-        - asset: assets/fonts/Marianne-Bold.ttf
-          weight: 700
+  # Fonts: Marianne font files need to be downloaded separately
+  # See assets/fonts/README.md for instructions
+  # Uncomment when font files are added to assets/fonts/
+  # fonts:
+  #   - family: Marianne
+  #     fonts:
+  #       - asset: assets/fonts/Marianne-Regular.ttf
+  #       - asset: assets/fonts/Marianne-Bold.ttf
+  #         weight: 700
 
 # App icon configuration
 flutter_launcher_icons:
