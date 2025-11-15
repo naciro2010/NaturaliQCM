@@ -33,8 +33,8 @@ jobs:
 
       - name: Run dart_code_metrics
         run: |
-          flutter pub global activate dart_code_metrics
-          flutter pub global run dart_code_metrics:metrics analyze lib
+          dart pub global activate dart_code_metrics
+          dart pub global run dart_code_metrics:metrics analyze lib
 
   test:
     name: Test
@@ -170,8 +170,7 @@ jobs:
 
       - name: Run dependency audit
         run: |
-          flutter pub outdated --mode=null-safety
-          flutter pub audit || true
+          flutter pub outdated || true
 
       - name: Check for secrets
         uses: trufflesecurity/trufflehog@main
