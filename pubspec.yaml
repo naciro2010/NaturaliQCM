@@ -46,7 +46,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.1
-  dart_code_metrics: ^5.7.6
   build_runner: ^2.4.7
   flutter_launcher_icons: ^0.13.1
   flutter_native_splash: ^2.3.8
@@ -60,12 +59,15 @@ flutter:
     - assets/images/
     - assets/data/
 
-  fonts:
-    - family: Marianne
-      fonts:
-        - asset: assets/fonts/Marianne-Regular.ttf
-        - asset: assets/fonts/Marianne-Bold.ttf
-          weight: 700
+  # Fonts: Marianne font files need to be downloaded separately
+  # See assets/fonts/README.md for instructions
+  # Uncomment when font files are added to assets/fonts/
+  # fonts:
+  #   - family: Marianne
+  #     fonts:
+  #       - asset: assets/fonts/Marianne-Regular.ttf
+  #       - asset: assets/fonts/Marianne-Bold.ttf
+  #         weight: 700
 
 # App icon configuration
 flutter_launcher_icons:
