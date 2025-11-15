@@ -31,11 +31,6 @@ jobs:
       - name: Analyze code
         run: flutter analyze
 
-      - name: Run dart_code_metrics
-        run: |
-          dart pub global activate dart_code_metrics
-          dart pub global run dart_code_metrics:metrics analyze lib
-
   test:
     name: Test
     runs-on: ubuntu-latest
