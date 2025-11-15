@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 /// Bouton principal de l'application (Bleu République Française)
 class PrimaryButton extends StatelessWidget {
   final String label;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final bool isLoading;
   final IconData? icon;
   final bool fullWidth;
