@@ -176,7 +176,9 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
                 child: Container(
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.primary.withOpacity(0.1),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
@@ -190,9 +192,9 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
 
               Text(
                 'Informations de base',
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                style: Theme.of(
+                  context,
+                ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 16),
 
@@ -225,10 +227,7 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
                   ),
                 ),
                 items: _frenchLevels.map((level) {
-                  return DropdownMenuItem(
-                    value: level,
-                    child: Text(level),
-                  );
+                  return DropdownMenuItem(value: level, child: Text(level));
                 }).toList(),
                 onChanged: (value) {
                   if (value != null) {
@@ -244,9 +243,9 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
               // Biometric section
               Text(
                 'Sécurité',
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                style: Theme.of(
+                  context,
+                ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 16),
 
@@ -269,29 +268,23 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
                               children: [
                                 Text(
                                   'Authentification biométrique',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium
-                                      ?.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                  style: Theme.of(context).textTheme.titleMedium
+                                      ?.copyWith(fontWeight: FontWeight.bold),
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
                                   _biometricAvailable
                                       ? 'Protégez vos données avec ${_getBiometricTypeText()}'
                                       : 'Non disponible sur cet appareil',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
+                                  style: Theme.of(context).textTheme.bodySmall
                                       ?.copyWith(
                                         color: _biometricAvailable
-                                            ? Theme.of(context)
-                                                .colorScheme
-                                                .onSurfaceVariant
-                                            : Theme.of(context)
-                                                .colorScheme
-                                                .error,
+                                            ? Theme.of(
+                                                context,
+                                              ).colorScheme.onSurfaceVariant
+                                            : Theme.of(
+                                                context,
+                                              ).colorScheme.error,
                                       ),
                                 ),
                               ],
@@ -314,10 +307,9 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
                         Container(
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .primary
-                                .withOpacity(0.1),
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.primary.withOpacity(0.1),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Row(
@@ -331,12 +323,11 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
                               Expanded(
                                 child: Text(
                                   'Vous devrez confirmer votre identité lors de la création du profil',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
+                                  style: Theme.of(context).textTheme.bodySmall
                                       ?.copyWith(
-                                        color:
-                                            Theme.of(context).colorScheme.primary,
+                                        color: Theme.of(
+                                          context,
+                                        ).colorScheme.primary,
                                       ),
                                 ),
                               ),

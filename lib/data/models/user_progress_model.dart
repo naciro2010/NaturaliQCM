@@ -47,8 +47,7 @@ class UserProgressModel {
   }
 
   /// Taux de réussite (0.0 à 1.0)
-  double get successRate =>
-      timesSeen > 0 ? timesCorrect / timesSeen : 0.0;
+  double get successRate => timesSeen > 0 ? timesCorrect / timesSeen : 0.0;
 
   /// Est-ce qu'une révision est due?
   bool get isDueForReview => DateTime.now().isAfter(nextReviewAt);

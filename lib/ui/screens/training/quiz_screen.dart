@@ -183,7 +183,9 @@ class _QuizScreenState extends State<QuizScreen> {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: isCorrect ? Colors.green.shade700 : Colors.red.shade700,
+                    color: isCorrect
+                        ? Colors.green.shade700
+                        : Colors.red.shade700,
                   ),
                 ),
               ],
@@ -191,10 +193,7 @@ class _QuizScreenState extends State<QuizScreen> {
             const SizedBox(height: 12),
             const Text(
               'Explication :',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
             const SizedBox(height: 8),
             Text(
@@ -225,11 +224,7 @@ class _QuizScreenState extends State<QuizScreen> {
           padding: const EdgeInsets.all(12.0),
           child: Row(
             children: [
-              Icon(
-                Icons.menu_book,
-                color: Colors.blue.shade700,
-                size: 20,
-              ),
+              Icon(Icons.menu_book, color: Colors.blue.shade700, size: 20),
               const SizedBox(width: 8),
               Expanded(
                 child: Text(

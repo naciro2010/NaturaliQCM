@@ -41,8 +41,9 @@ class _ThemeCard extends StatelessWidget {
 
     final lessonRepo = LessonRepository();
     final lessons = await lessonRepo.getLessonsByTheme(theme.id);
-    final completedByTheme =
-        await lessonRepo.getCompletedLessonsByTheme(userProfile['id'] as int);
+    final completedByTheme = await lessonRepo.getCompletedLessonsByTheme(
+      userProfile['id'] as int,
+    );
 
     return {
       'completed': completedByTheme[theme.id] ?? 0,
@@ -120,8 +121,9 @@ class _ThemeCard extends StatelessWidget {
                     child: LinearProgressIndicator(
                       value: percentage,
                       backgroundColor: Colors.grey[200],
-                      valueColor:
-                          const AlwaysStoppedAnimation<Color>(AppTheme.bleuRF),
+                      valueColor: const AlwaysStoppedAnimation<Color>(
+                        AppTheme.bleuRF,
+                      ),
                       minHeight: 6,
                     ),
                   ),

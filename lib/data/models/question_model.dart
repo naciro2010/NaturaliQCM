@@ -5,11 +5,7 @@ enum QuestionType {
 }
 
 /// Niveau de difficulté
-enum QuestionDifficulty {
-  easy,
-  medium,
-  hard,
-}
+enum QuestionDifficulty { easy, medium, hard }
 
 /// Modèle de question conforme aux exigences réglementaires
 class QuestionModel {

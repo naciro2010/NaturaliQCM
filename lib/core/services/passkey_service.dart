@@ -67,7 +67,8 @@ class PasskeyService {
       if (authenticated) {
         // Générer un ID de passkey (dans une vraie implémentation,
         // cela viendrait du Credential Manager)
-        final passkeyId = 'pk_${userId}_${DateTime.now().millisecondsSinceEpoch}';
+        final passkeyId =
+            'pk_${userId}_${DateTime.now().millisecondsSinceEpoch}';
 
         return PasskeyResult.success(
           passkeyId: passkeyId,
@@ -117,9 +118,7 @@ class PasskeyService {
         return PasskeyResult.failure('Authentification annulée');
       }
     } on PlatformException catch (e) {
-      return PasskeyResult.failure(
-        'Erreur d\'authentification: ${e.message}',
-      );
+      return PasskeyResult.failure('Erreur d\'authentification: ${e.message}');
     } catch (e) {
       return PasskeyResult.failure('Erreur inconnue: $e');
     }
@@ -182,10 +181,7 @@ class PasskeyResult {
     this.errorMessage,
   });
 
-  factory PasskeyResult.success({
-    String? passkeyId,
-    String? message,
-  }) {
+  factory PasskeyResult.success({String? passkeyId, String? message}) {
     return PasskeyResult._(
       isSuccess: true,
       passkeyId: passkeyId,
@@ -194,10 +190,7 @@ class PasskeyResult {
   }
 
   factory PasskeyResult.failure(String message) {
-    return PasskeyResult._(
-      isSuccess: false,
-      errorMessage: message,
-    );
+    return PasskeyResult._(isSuccess: false, errorMessage: message);
   }
 }
 

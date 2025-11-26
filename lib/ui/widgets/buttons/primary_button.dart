@@ -58,9 +58,7 @@ class PrimaryButton extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.primary,
       foregroundColor: Colors.white,
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       elevation: 2,
     );
   }

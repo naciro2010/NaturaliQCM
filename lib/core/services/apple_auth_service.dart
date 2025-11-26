@@ -21,8 +21,10 @@ class AppleAuthService {
     const charset =
         '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
     final random = Random.secure();
-    return List.generate(length, (_) => charset[random.nextInt(charset.length)])
-        .join();
+    return List.generate(
+      length,
+      (_) => charset[random.nextInt(charset.length)],
+    ).join();
   }
 
   /// Hash SHA256 du nonce pour l'envoyer à Apple
@@ -74,7 +76,8 @@ class AppleAuthService {
   }
 
   AppleAuthResult _handleAuthorizationException(
-      SignInWithAppleAuthorizationException e) {
+    SignInWithAppleAuthorizationException e,
+  ) {
     switch (e.code) {
       case AuthorizationErrorCode.canceled:
         return AppleAuthResult.failure('Connexion annulée par l\'utilisateur');
@@ -136,9 +139,6 @@ class AppleAuthResult {
   }
 
   factory AppleAuthResult.failure(String message) {
-    return AppleAuthResult._(
-      isSuccess: false,
-      errorMessage: message,
-    );
+    return AppleAuthResult._(isSuccess: false, errorMessage: message);
   }
 }

@@ -12,7 +12,9 @@ class PdfGeneratorService {
   /// Génère une attestation PDF pour une session d'examen réussie
   Future<void> generateExamAttestation(ExamSessionModel session) async {
     if (session.passed != true) {
-      throw Exception('Attestation disponible uniquement pour les examens réussis');
+      throw Exception(
+        'Attestation disponible uniquement pour les examens réussis',
+      );
     }
 
     // Récupérer les infos du profil utilisateur
@@ -117,10 +119,7 @@ class PdfGeneratorService {
                       '${session.score}/40 (${(session.score! / 40 * 100).toStringAsFixed(1)}%)',
                     ),
                     pw.SizedBox(height: 12),
-                    _buildResultRow(
-                      'Seuil de réussite',
-                      '32/40 (80%)',
-                    ),
+                    _buildResultRow('Seuil de réussite', '32/40 (80%)'),
                     pw.SizedBox(height: 12),
                     _buildResultRow(
                       'Date de l\'examen',
@@ -145,17 +144,11 @@ class PdfGeneratorService {
                 children: [
                   pw.Text(
                     'NaturaliQCM - Préparation à l\'examen civique',
-                    style: pw.TextStyle(
-                      fontSize: 10,
-                      color: PdfColors.grey700,
-                    ),
+                    style: pw.TextStyle(fontSize: 10, color: PdfColors.grey700),
                   ),
                   pw.Text(
                     'Document généré le ${dateFormat.format(DateTime.now())}',
-                    style: pw.TextStyle(
-                      fontSize: 10,
-                      color: PdfColors.grey700,
-                    ),
+                    style: pw.TextStyle(fontSize: 10, color: PdfColors.grey700),
                   ),
                 ],
               ),
@@ -179,7 +172,10 @@ class PdfGeneratorService {
     );
 
     // Sauvegarder et ouvrir le PDF
-    await _savePdf(pdf, 'attestation_${session.id}_${completedAt.millisecondsSinceEpoch}.pdf');
+    await _savePdf(
+      pdf,
+      'attestation_${session.id}_${completedAt.millisecondsSinceEpoch}.pdf',
+    );
   }
 
   /// Construit l'en-tête du document
@@ -201,10 +197,7 @@ class PdfGeneratorService {
             pw.SizedBox(height: 4),
             pw.Text(
               'Préparation à l\'examen civique français',
-              style: pw.TextStyle(
-                fontSize: 10,
-                color: PdfColors.grey700,
-              ),
+              style: pw.TextStyle(fontSize: 10, color: PdfColors.grey700),
             ),
           ],
         ),
@@ -234,17 +227,11 @@ class PdfGeneratorService {
       children: [
         pw.Text(
           label,
-          style: pw.TextStyle(
-            fontSize: 14,
-            fontWeight: pw.FontWeight.bold,
-          ),
+          style: pw.TextStyle(fontSize: 14, fontWeight: pw.FontWeight.bold),
         ),
         pw.Text(
           value,
-          style: pw.TextStyle(
-            fontSize: 14,
-            color: PdfColors.blue900,
-          ),
+          style: pw.TextStyle(fontSize: 14, color: PdfColors.blue900),
         ),
       ],
     );

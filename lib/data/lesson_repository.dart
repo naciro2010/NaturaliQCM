@@ -14,7 +14,7 @@ class LessonRepository {
 
     // Vérifie si les leçons sont déjà chargées
     final count = Sqflite.firstIntValue(
-      await db.rawQuery('SELECT COUNT(*) FROM lessons')
+      await db.rawQuery('SELECT COUNT(*) FROM lessons'),
     );
 
     if (count != null && count > 0) {
@@ -22,8 +22,9 @@ class LessonRepository {
     }
 
     // Charge le fichier JSON
-    final String jsonString =
-        await rootBundle.loadString('assets/data/lessons.json');
+    final String jsonString = await rootBundle.loadString(
+      'assets/data/lessons.json',
+    );
     final List<dynamic> jsonList = json.decode(jsonString);
 
     // Insère les leçons
@@ -61,7 +62,9 @@ class LessonRepository {
 
   /// Récupère la progression d'une leçon pour un utilisateur
   Future<LessonProgressModel?> getLessonProgress(
-      int userId, int lessonId) async {
+    int userId,
+    int lessonId,
+  ) async {
     final db = await _dbHelper.database;
     final List<Map<String, dynamic>> maps = await db.query(
       'lesson_progress',
@@ -99,10 +102,7 @@ class LessonRepository {
 
     await db.update(
       'lesson_progress',
-      {
-        'completed_at': DateTime.now().toIso8601String(),
-        'is_completed': 1,
-      },
+      {'completed_at': DateTime.now().toIso8601String(), 'is_completed': 1},
       where: 'user_id = ? AND lesson_id = ?',
       whereArgs: [userId, lessonId],
     );
@@ -110,10 +110,13 @@ class LessonRepository {
 
   /// Récupère toutes les leçons avec leur progression
   Future<List<Map<String, dynamic>>> getLessonsWithProgress(
-      int userId, int themeId) async {
+    int userId,
+    int themeId,
+  ) async {
     final db = await _dbHelper.database;
 
-    final List<Map<String, dynamic>> results = await db.rawQuery('''
+    final List<Map<String, dynamic>> results = await db.rawQuery(
+      '''
       SELECT
         l.*,
         lp.is_completed,
@@ -123,7 +126,9 @@ class LessonRepository {
       LEFT JOIN lesson_progress lp ON l.id = lp.lesson_id AND lp.user_id = ?
       WHERE l.theme_id = ?
       ORDER BY l.display_order ASC
-    ''', [userId, themeId]);
+    ''',
+      [userId, themeId],
+    );
 
     return results;
   }
@@ -132,7 +137,8 @@ class LessonRepository {
   Future<Map<int, int>> getCompletedLessonsByTheme(int userId) async {
     final db = await _dbHelper.database;
 
-    final List<Map<String, dynamic>> results = await db.rawQuery('''
+    final List<Map<String, dynamic>> results = await db.rawQuery(
+      '''
       SELECT
         l.theme_id,
         COUNT(*) as completed_count
@@ -140,7 +146,9 @@ class LessonRepository {
       JOIN lessons l ON lp.lesson_id = l.id
       WHERE lp.user_id = ? AND lp.is_completed = 1
       GROUP BY l.theme_id
-    ''', [userId]);
+    ''',
+      [userId],
+    );
 
     final Map<int, int> completedByTheme = {};
     for (var row in results) {
@@ -154,16 +162,20 @@ class LessonRepository {
   Future<double> getOverallProgress(int userId) async {
     final db = await _dbHelper.database;
 
-    final totalLessons = Sqflite.firstIntValue(
-      await db.rawQuery('SELECT COUNT(*) FROM lessons')
-    ) ?? 0;
+    final totalLessons =
+        Sqflite.firstIntValue(
+          await db.rawQuery('SELECT COUNT(*) FROM lessons'),
+        ) ??
+        0;
 
-    final completedLessons = Sqflite.firstIntValue(
-      await db.rawQuery(
-        'SELECT COUNT(*) FROM lesson_progress WHERE user_id = ? AND is_completed = 1',
-        [userId],
-      )
-    ) ?? 0;
+    final completedLessons =
+        Sqflite.firstIntValue(
+          await db.rawQuery(
+            'SELECT COUNT(*) FROM lesson_progress WHERE user_id = ? AND is_completed = 1',
+            [userId],
+          ),
+        ) ??
+        0;
 
     if (totalLessons == 0) return 0.0;
     return completedLessons / totalLessons;

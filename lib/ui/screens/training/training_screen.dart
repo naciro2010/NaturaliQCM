@@ -37,10 +37,12 @@ class _TrainingScreenState extends State<TrainingScreen> {
 
       _userId = userProfile['id'] as int;
 
-      final recommendations =
-          await _spacedRepService.getDailyRecommendations(_userId!);
-      final progressByTheme =
-          await _spacedRepService.getProgressByTheme(_userId!);
+      final recommendations = await _spacedRepService.getDailyRecommendations(
+        _userId!,
+      );
+      final progressByTheme = await _spacedRepService.getProgressByTheme(
+        _userId!,
+      );
 
       setState(() {
         _dailyRecommendations = recommendations;
@@ -50,9 +52,9 @@ class _TrainingScreenState extends State<TrainingScreen> {
     } catch (e) {
       setState(() => _isLoading = false);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Erreur: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Erreur: $e')));
       }
     }
   }
@@ -100,10 +102,7 @@ class _TrainingScreenState extends State<TrainingScreen> {
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              AppTheme.bleuRF,
-              AppTheme.bleuRF.withOpacity(0.8),
-            ],
+            colors: [AppTheme.bleuRF, AppTheme.bleuRF.withOpacity(0.8)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -115,11 +114,7 @@ class _TrainingScreenState extends State<TrainingScreen> {
           children: [
             Row(
               children: [
-                const Icon(
-                  Icons.auto_awesome,
-                  color: Colors.white,
-                  size: 28,
-                ),
+                const Icon(Icons.auto_awesome, color: Colors.white, size: 28),
                 const SizedBox(width: 12),
                 const Text(
                   'Recommandation du jour',
@@ -135,10 +130,7 @@ class _TrainingScreenState extends State<TrainingScreen> {
             if (dueToday > 0) ...[
               Text(
                 'Vous avez $dueToday question${dueToday > 1 ? 's' : ''} à réviser aujourd\'hui',
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                ),
+                style: const TextStyle(fontSize: 16, color: Colors.white),
               ),
               const SizedBox(height: 12),
             ],
@@ -146,10 +138,7 @@ class _TrainingScreenState extends State<TrainingScreen> {
               children: [
                 const Text(
                   'Taux de réussite: ',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
-                  ),
+                  style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
                 Text(
                   '${(successRate * 100).toStringAsFixed(1)}%',
@@ -184,18 +173,12 @@ class _TrainingScreenState extends State<TrainingScreen> {
       children: [
         const Text(
           'Entraînement par thème',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
         ...ThemeModel.officialThemes.map((theme) {
           final progress = _progressByTheme?[theme.id];
-          return _ThemeSessionCard(
-            theme: theme,
-            progress: progress,
-          );
+          return _ThemeSessionCard(theme: theme, progress: progress);
         }).toList(),
       ],
     );
@@ -240,10 +223,7 @@ class _TrainingScreenState extends State<TrainingScreen> {
                     SizedBox(height: 4),
                     Text(
                       'Voir votre progression par thème',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
-                      ),
+                      style: TextStyle(fontSize: 14, color: Colors.grey),
                     ),
                   ],
                 ),
@@ -308,18 +288,12 @@ class _ThemeSessionCard extends StatelessWidget {
                     if (questionsSeen > 0)
                       Text(
                         '$questionsSeen questions vues • ${(successRate * 100).toStringAsFixed(0)}% de réussite',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey[600],
-                        ),
+                        style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                       )
                     else
                       Text(
                         'Aucune question vue',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey[600],
-                        ),
+                        style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                       ),
                   ],
                 ),

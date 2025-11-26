@@ -43,14 +43,18 @@ class ExamQuestionSelector {
           .toList();
 
       // Sélectionner les mises en situation requises
-      final selectedPractical =
-          _selectRandomQuestions(practicalQuestions, practicalRequired);
+      final selectedPractical = _selectRandomQuestions(
+        practicalQuestions,
+        practicalRequired,
+      );
       selectedQuestions.addAll(selectedPractical);
 
       // Sélectionner les questions de connaissance pour compléter
       final knowledgeRequired = totalRequired - practicalRequired;
-      final selectedKnowledge =
-          _selectRandomQuestions(knowledgeQuestions, knowledgeRequired);
+      final selectedKnowledge = _selectRandomQuestions(
+        knowledgeQuestions,
+        knowledgeRequired,
+      );
       selectedQuestions.addAll(selectedKnowledge);
     }
 
@@ -128,13 +132,15 @@ class ExamQuestionSelector {
     final reorderedChoices = shuffledChoices
         .asMap()
         .entries
-        .map((entry) => ChoiceModel(
-              id: entry.value.id,
-              questionId: entry.value.questionId,
-              choiceText: entry.value.choiceText,
-              isCorrect: entry.value.isCorrect,
-              displayOrder: entry.key,
-            ))
+        .map(
+          (entry) => ChoiceModel(
+            id: entry.value.id,
+            questionId: entry.value.questionId,
+            choiceText: entry.value.choiceText,
+            isCorrect: entry.value.isCorrect,
+            displayOrder: entry.key,
+          ),
+        )
         .toList();
 
     return QuestionModel(

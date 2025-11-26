@@ -72,7 +72,9 @@ class _ExamResultsScreenState extends State<ExamResultsScreen>
       if (widget.isTimeout && mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('⏱️ Temps écoulé ! L\'examen a été soumis automatiquement.'),
+            content: Text(
+              '⏱️ Temps écoulé ! L\'examen a été soumis automatiquement.',
+            ),
             backgroundColor: Colors.orange,
             duration: Duration(seconds: 4),
           ),
@@ -81,9 +83,9 @@ class _ExamResultsScreenState extends State<ExamResultsScreen>
     } catch (e) {
       setState(() => _isLoading = false);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Erreur: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Erreur: $e')));
       }
     }
   }
@@ -143,9 +145,7 @@ class _ExamResultsScreenState extends State<ExamResultsScreen>
 
     return Card(
       elevation: 8,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Container(
         padding: const EdgeInsets.all(32),
         decoration: BoxDecoration(
@@ -192,10 +192,7 @@ class _ExamResultsScreenState extends State<ExamResultsScreen>
               isPassed
                   ? 'Vous avez réussi l\'examen officiel'
                   : 'Vous n\'avez pas atteint le seuil de réussite',
-              style: const TextStyle(
-                fontSize: 18,
-                color: Colors.white70,
-              ),
+              style: const TextStyle(fontSize: 18, color: Colors.white70),
               textAlign: TextAlign.center,
             ),
 
@@ -213,19 +210,13 @@ class _ExamResultsScreenState extends State<ExamResultsScreen>
             ),
             Text(
               '$percentage%',
-              style: const TextStyle(
-                fontSize: 32,
-                color: Colors.white70,
-              ),
+              style: const TextStyle(fontSize: 32, color: Colors.white70),
             ),
 
             const SizedBox(height: 24),
 
             // Divider
-            Container(
-              height: 2,
-              color: Colors.white.withOpacity(0.3),
-            ),
+            Container(height: 2, color: Colors.white.withOpacity(0.3)),
 
             const SizedBox(height: 24),
 
@@ -233,21 +224,9 @@ class _ExamResultsScreenState extends State<ExamResultsScreen>
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildStatColumn(
-                  'Bonnes',
-                  '$score',
-                  Icons.check_circle,
-                ),
-                _buildStatColumn(
-                  'Mauvaises',
-                  '${40 - score}',
-                  Icons.cancel,
-                ),
-                _buildStatColumn(
-                  'Durée',
-                  durationStr,
-                  Icons.access_time,
-                ),
+                _buildStatColumn('Bonnes', '$score', Icons.check_circle),
+                _buildStatColumn('Mauvaises', '${40 - score}', Icons.cancel),
+                _buildStatColumn('Durée', durationStr, Icons.access_time),
               ],
             ),
 
@@ -299,10 +278,7 @@ class _ExamResultsScreenState extends State<ExamResultsScreen>
         ),
         Text(
           label,
-          style: const TextStyle(
-            fontSize: 14,
-            color: Colors.white70,
-          ),
+          style: const TextStyle(fontSize: 14, color: Colors.white70),
         ),
       ],
     );
@@ -316,20 +292,14 @@ class _ExamResultsScreenState extends State<ExamResultsScreen>
       children: [
         const Text(
           'Résultats par thème',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
         ...ThemeModel.officialThemes.map((theme) {
           final themeBreakdown = breakdown[theme.id];
           if (themeBreakdown == null) return const SizedBox.shrink();
 
-          return _ThemeBreakdownCard(
-            theme: theme,
-            breakdown: themeBreakdown,
-          );
+          return _ThemeBreakdownCard(theme: theme, breakdown: themeBreakdown);
         }).toList(),
       ],
     );
@@ -372,10 +342,7 @@ class _ExamResultsScreenState extends State<ExamResultsScreen>
                       SizedBox(height: 4),
                       Text(
                         'Téléchargez votre attestation officielle',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.black54,
-                        ),
+                        style: TextStyle(fontSize: 14, color: Colors.black54),
                       ),
                     ],
                   ),
@@ -500,10 +467,7 @@ class _ThemeBreakdownCard extends StatelessWidget {
   final ThemeModel theme;
   final ThemeScoreBreakdown breakdown;
 
-  const _ThemeBreakdownCard({
-    required this.theme,
-    required this.breakdown,
-  });
+  const _ThemeBreakdownCard({required this.theme, required this.breakdown});
 
   @override
   Widget build(BuildContext context) {
@@ -511,8 +475,8 @@ class _ThemeBreakdownCard extends StatelessWidget {
     final color = breakdown.percentage >= 0.8
         ? Colors.green
         : breakdown.percentage >= 0.6
-            ? Colors.orange
-            : Colors.red;
+        ? Colors.orange
+        : Colors.red;
 
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
@@ -559,10 +523,7 @@ class _ThemeBreakdownCard extends StatelessWidget {
                     ),
                     Text(
                       '$percentage%',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey[600],
-                      ),
+                      style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                     ),
                   ],
                 ),

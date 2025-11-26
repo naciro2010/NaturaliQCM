@@ -174,16 +174,26 @@ class DatabaseHelper {
 
     // Indexes pour performance
     await db.execute(
-        'CREATE INDEX idx_questions_theme ON questions(theme_id, type)');
+      'CREATE INDEX idx_questions_theme ON questions(theme_id, type)',
+    );
     await db.execute(
-        'CREATE INDEX idx_exam_sessions_user ON exam_sessions(user_id, started_at DESC)');
+      'CREATE INDEX idx_exam_sessions_user ON exam_sessions(user_id, started_at DESC)',
+    );
     await db.execute(
-        'CREATE INDEX idx_exam_answers_session ON exam_answers(exam_session_id)');
+      'CREATE INDEX idx_exam_answers_session ON exam_answers(exam_session_id)',
+    );
     await db.execute(
-        'CREATE INDEX idx_user_progress_user_next_review ON user_progress(user_id, next_review_at)');
-    await db.execute('CREATE INDEX idx_choices_question ON choices(question_id)');
-    await db.execute('CREATE INDEX idx_lessons_theme ON lessons(theme_id, display_order)');
-    await db.execute('CREATE INDEX idx_lesson_progress_user ON lesson_progress(user_id, lesson_id)');
+      'CREATE INDEX idx_user_progress_user_next_review ON user_progress(user_id, next_review_at)',
+    );
+    await db.execute(
+      'CREATE INDEX idx_choices_question ON choices(question_id)',
+    );
+    await db.execute(
+      'CREATE INDEX idx_lessons_theme ON lessons(theme_id, display_order)',
+    );
+    await db.execute(
+      'CREATE INDEX idx_lesson_progress_user ON lesson_progress(user_id, lesson_id)',
+    );
   }
 
   Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {

@@ -42,9 +42,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     } catch (e) {
       setState(() => _isLoading = false);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Erreur: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Erreur: $e')));
       }
     }
   }
@@ -92,10 +92,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       children: [
         const Text(
           'Profil',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
         Card(
@@ -164,10 +161,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       children: [
         const Text(
           'Mes données',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
         Card(
@@ -215,10 +209,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       children: [
         const Text(
           'À propos',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
         Card(
@@ -264,10 +255,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       children: [
         const Text(
           'Légal',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
         Card(
@@ -347,16 +335,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             title: const Text(
               'Supprimer toutes mes données',
-              style: TextStyle(
-                color: Colors.red,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
             ),
             subtitle: const Text(
               'Action irréversible - Suppression complète',
               style: TextStyle(color: Colors.red),
             ),
-            trailing: const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.red),
+            trailing: const Icon(
+              Icons.arrow_forward_ios,
+              size: 16,
+              color: Colors.red,
+            ),
             onTap: _confirmDeleteAllData,
           ),
         ),
@@ -479,10 +468,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             SizedBox(height: 12),
             Text(
               'Cette action est IRRÉVERSIBLE.',
-              style: TextStyle(
-                color: Colors.red,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             Text('Voulez-vous vraiment continuer ?'),

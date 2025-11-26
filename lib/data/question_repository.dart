@@ -14,7 +14,7 @@ class QuestionRepository {
 
     // Vérifie si les questions sont déjà chargées
     final count = Sqflite.firstIntValue(
-      await db.rawQuery('SELECT COUNT(*) FROM questions')
+      await db.rawQuery('SELECT COUNT(*) FROM questions'),
     );
 
     if (count != null && count > 0) {
@@ -22,8 +22,9 @@ class QuestionRepository {
     }
 
     // Charge le fichier JSON
-    final String jsonString =
-        await rootBundle.loadString('assets/data/questions.json');
+    final String jsonString = await rootBundle.loadString(
+      'assets/data/questions.json',
+    );
     final Map<String, dynamic> jsonData = json.decode(jsonString);
     final List<dynamic> questionsList = jsonData['questions'];
 
@@ -153,7 +154,8 @@ class QuestionRepository {
 
   /// Récupère les questions liées à une leçon spécifique
   Future<List<QuestionModel>> getQuestionsByLessonReference(
-      String lessonReference) async {
+    String lessonReference,
+  ) async {
     final db = await _dbHelper.database;
 
     final List<Map<String, dynamic>> questionMaps = await db.query(
@@ -176,7 +178,7 @@ class QuestionRepository {
   Future<int> getTotalQuestionCount() async {
     final db = await _dbHelper.database;
     final count = Sqflite.firstIntValue(
-      await db.rawQuery('SELECT COUNT(*) FROM questions')
+      await db.rawQuery('SELECT COUNT(*) FROM questions'),
     );
     return count ?? 0;
   }
@@ -200,7 +202,9 @@ class QuestionRepository {
 
   /// Récupère les questions par difficulté
   Future<List<QuestionModel>> getQuestionsByDifficulty(
-      Difficulty difficulty, {int? themeId}) async {
+    Difficulty difficulty, {
+    int? themeId,
+  }) async {
     final db = await _dbHelper.database;
 
     String whereClause = 'difficulty = ?';
@@ -229,7 +233,9 @@ class QuestionRepository {
 
   /// Récupère les questions par type
   Future<List<QuestionModel>> getQuestionsByType(
-      QuestionType type, {int? themeId}) async {
+    QuestionType type, {
+    int? themeId,
+  }) async {
     final db = await _dbHelper.database;
 
     String whereClause = 'type = ?';
@@ -267,16 +273,17 @@ class QuestionRepository {
     // themeId: {total, practicalScenario}
     final distribution = {
       1: {'total': 11, 'practicalScenario': 6}, // Principes et valeurs
-      2: {'total': 6, 'practicalScenario': 0},  // Institutions
+      2: {'total': 6, 'practicalScenario': 0}, // Institutions
       3: {'total': 11, 'practicalScenario': 6}, // Droits et devoirs
-      4: {'total': 8, 'practicalScenario': 0},  // Histoire, culture
-      5: {'total': 4, 'practicalScenario': 0},  // Vivre en France
+      4: {'total': 8, 'practicalScenario': 0}, // Histoire, culture
+      5: {'total': 4, 'practicalScenario': 0}, // Vivre en France
     };
 
     for (var themeId in distribution.keys) {
       final themeDistribution = distribution[themeId]!;
       final totalQuestions = themeDistribution['total'] as int;
-      final practicalScenarioCount = themeDistribution['practicalScenario'] as int;
+      final practicalScenarioCount =
+          themeDistribution['practicalScenario'] as int;
       final knowledgeCount = totalQuestions - practicalScenarioCount;
 
       // Récupérer les questions de mise en situation
@@ -319,7 +326,7 @@ class QuestionRepository {
     // Vérifier qu'on a bien 40 questions
     if (examQuestions.length != 40) {
       throw Exception(
-        'Impossible de générer un examen conforme: seulement ${examQuestions.length} questions disponibles'
+        'Impossible de générer un examen conforme: seulement ${examQuestions.length} questions disponibles',
       );
     }
 

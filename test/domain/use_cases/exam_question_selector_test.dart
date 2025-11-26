@@ -16,58 +16,70 @@ void main() {
       final questionsByTheme = _createMockQuestionPool();
 
       // Act
-      final selectedQuestions =
-          await selector.selectExamQuestions(questionsByTheme);
+      final selectedQuestions = await selector.selectExamQuestions(
+        questionsByTheme,
+      );
 
       // Assert
       expect(selectedQuestions.length, equals(40));
     });
 
-    test('should respect regulatory distribution for theme 1 (Principes)', () async {
-      // Arrange
-      final questionsByTheme = _createMockQuestionPool();
+    test(
+      'should respect regulatory distribution for theme 1 (Principes)',
+      () async {
+        // Arrange
+        final questionsByTheme = _createMockQuestionPool();
 
-      // Act
-      final selectedQuestions =
-          await selector.selectExamQuestions(questionsByTheme);
+        // Act
+        final selectedQuestions = await selector.selectExamQuestions(
+          questionsByTheme,
+        );
 
-      // Assert
-      final theme1Questions =
-          selectedQuestions.where((q) => q.themeId == 1).toList();
-      final theme1Practical = theme1Questions
-          .where((q) => q.type == QuestionType.practicalScenario)
-          .length;
+        // Assert
+        final theme1Questions = selectedQuestions
+            .where((q) => q.themeId == 1)
+            .toList();
+        final theme1Practical = theme1Questions
+            .where((q) => q.type == QuestionType.practicalScenario)
+            .length;
 
-      expect(theme1Questions.length, equals(11)); // Total for theme 1
-      expect(theme1Practical, equals(6)); // 6 practical scenarios
-    });
+        expect(theme1Questions.length, equals(11)); // Total for theme 1
+        expect(theme1Practical, equals(6)); // 6 practical scenarios
+      },
+    );
 
-    test('should respect regulatory distribution for theme 3 (Droits)', () async {
-      // Arrange
-      final questionsByTheme = _createMockQuestionPool();
+    test(
+      'should respect regulatory distribution for theme 3 (Droits)',
+      () async {
+        // Arrange
+        final questionsByTheme = _createMockQuestionPool();
 
-      // Act
-      final selectedQuestions =
-          await selector.selectExamQuestions(questionsByTheme);
+        // Act
+        final selectedQuestions = await selector.selectExamQuestions(
+          questionsByTheme,
+        );
 
-      // Assert
-      final theme3Questions =
-          selectedQuestions.where((q) => q.themeId == 3).toList();
-      final theme3Practical = theme3Questions
-          .where((q) => q.type == QuestionType.practicalScenario)
-          .length;
+        // Assert
+        final theme3Questions = selectedQuestions
+            .where((q) => q.themeId == 3)
+            .toList();
+        final theme3Practical = theme3Questions
+            .where((q) => q.type == QuestionType.practicalScenario)
+            .length;
 
-      expect(theme3Questions.length, equals(11)); // Total for theme 3
-      expect(theme3Practical, equals(6)); // 6 practical scenarios
-    });
+        expect(theme3Questions.length, equals(11)); // Total for theme 3
+        expect(theme3Practical, equals(6)); // 6 practical scenarios
+      },
+    );
 
     test('should respect distribution for all themes', () async {
       // Arrange
       final questionsByTheme = _createMockQuestionPool();
 
       // Act
-      final selectedQuestions =
-          await selector.selectExamQuestions(questionsByTheme);
+      final selectedQuestions = await selector.selectExamQuestions(
+        questionsByTheme,
+      );
 
       // Assert
       final distribution = ExamSessionModel.themeDistribution;
@@ -77,8 +89,9 @@ void main() {
         final expectedTotal = entry.value['total']!;
         final expectedPractical = entry.value['practicalScenario']!;
 
-        final themeQuestions =
-            selectedQuestions.where((q) => q.themeId == themeId).toList();
+        final themeQuestions = selectedQuestions
+            .where((q) => q.themeId == themeId)
+            .toList();
         final practicalCount = themeQuestions
             .where((q) => q.type == QuestionType.practicalScenario)
             .length;
@@ -102,8 +115,9 @@ void main() {
       final questionsByTheme = _createMockQuestionPool();
 
       // Act
-      final selectedQuestions =
-          await selector.selectExamQuestions(questionsByTheme);
+      final selectedQuestions = await selector.selectExamQuestions(
+        questionsByTheme,
+      );
 
       // Assert
       final questionIds = selectedQuestions.map((q) => q.id).toSet();
@@ -173,8 +187,11 @@ Map<int, List<QuestionModel>> _createMockQuestionPool() {
       ),
       ...List.generate(
         10,
-        (i) =>
-            _createMockQuestion(i + 10, 1, type: QuestionType.practicalScenario),
+        (i) => _createMockQuestion(
+          i + 10,
+          1,
+          type: QuestionType.practicalScenario,
+        ),
       ),
     ],
     2: [
@@ -276,7 +293,8 @@ List<QuestionModel> _createValidSelection() {
   questions.addAll(
     List.generate(
       6,
-      (i) => _createMockQuestion(i + 5, 1, type: QuestionType.practicalScenario),
+      (i) =>
+          _createMockQuestion(i + 5, 1, type: QuestionType.practicalScenario),
     ),
   );
 

@@ -22,20 +22,13 @@ class ComplianceScreen extends StatelessWidget {
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [
-                    AppTheme.bleuRF,
-                    AppTheme.bleuRF.withOpacity(0.8),
-                  ],
+                  colors: [AppTheme.bleuRF, AppTheme.bleuRF.withOpacity(0.8)],
                 ),
                 borderRadius: BorderRadius.circular(16),
               ),
               child: const Column(
                 children: [
-                  Icon(
-                    Icons.verified,
-                    size: 64,
-                    color: Colors.white,
-                  ),
+                  Icon(Icons.verified, size: 64, color: Colors.white),
                   SizedBox(height: 16),
                   Text(
                     'Application conforme',
@@ -49,10 +42,7 @@ class ComplianceScreen extends StatelessWidget {
                   SizedBox(height: 8),
                   Text(
                     'Arrêté du 10 octobre 2025',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white70,
-                    ),
+                    style: TextStyle(fontSize: 16, color: Colors.white70),
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -62,7 +52,7 @@ class ComplianceScreen extends StatelessWidget {
             _buildSection(
               'Texte réglementaire',
               'Cette application est conforme à l\'arrêté du 10 octobre 2025 relatif au test de connaissance '
-              'de la langue française et des valeurs de la République dans le cadre de la procédure de naturalisation.',
+                  'de la langue française et des valeurs de la République dans le cadre de la procédure de naturalisation.',
             ),
             _buildComplianceItem(
               'Format de l\'examen',
@@ -153,12 +143,12 @@ class ComplianceScreen extends StatelessWidget {
             _buildSection(
               'Références légales',
               'Les questions et contenus sont basés sur l\'annexe I de l\'arrêté, '
-              'qui définit le programme et les connaissances requises.',
+                  'qui définit le programme et les connaissances requises.',
             ),
             _buildSection(
               'Nature des questions',
               '• Questions de connaissance : portent sur les faits, dates, institutions\n'
-              '• Mises en situation : évaluent la compréhension des valeurs et leur application pratique',
+                  '• Mises en situation : évaluent la compréhension des valeurs et leur application pratique',
             ),
             const SizedBox(height: 24),
             Container(
@@ -216,13 +206,7 @@ class ComplianceScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          Text(
-            content,
-            style: const TextStyle(
-              fontSize: 15,
-              height: 1.5,
-            ),
-          ),
+          Text(content, style: const TextStyle(fontSize: 15, height: 1.5)),
         ],
       ),
     );
@@ -255,10 +239,7 @@ class ComplianceScreen extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: Colors.grey,
-                    ),
+                    style: const TextStyle(fontSize: 14, color: Colors.grey),
                   ),
                   const SizedBox(height: 4),
                   Text(
@@ -314,10 +295,7 @@ class ComplianceScreen extends StatelessWidget {
                     practicalScenarios > 0
                         ? '$totalQuestions questions (dont $practicalScenarios mises en situation)'
                         : '$totalQuestions questions',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey[600],
-                    ),
+                    style: TextStyle(fontSize: 12, color: Colors.grey[600]),
                   ),
                 ],
               ),

@@ -167,19 +167,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               color: page.color.withOpacity(0.1),
               shape: BoxShape.circle,
             ),
-            child: Icon(
-              page.icon,
-              size: 100,
-              color: page.color,
-            ),
+            child: Icon(page.icon, size: 100, color: page.color),
           ),
           const SizedBox(height: 48),
           Text(
             page.title,
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: page.color,
-                ),
+              fontWeight: FontWeight.bold,
+              color: page.color,
+            ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 24),
