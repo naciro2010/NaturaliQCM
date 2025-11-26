@@ -1,15 +1,74 @@
 # Guide de Déploiement - NaturaliQCM
 
-Ce document détaille la configuration et les procédures de déploiement automatique vers Google Play Store et Apple App Store.
+Ce document détaille la configuration et les procédures de déploiement automatique pour toutes les plateformes supportées.
 
 ## 📋 Table des matières
 
-1. [Configuration initiale](#configuration-initiale)
-2. [Configuration Android](#configuration-android)
-3. [Configuration iOS](#configuration-ios)
-4. [Déploiement automatique](#déploiement-automatique)
-5. [Déploiement manuel](#déploiement-manuel)
-6. [Résolution des problèmes](#résolution-des-problèmes)
+1. [Vue d'ensemble](#vue-densemble)
+2. [Déploiement Web](#déploiement-web)
+3. [Configuration Android](#configuration-android)
+4. [Configuration iOS](#configuration-ios)
+5. [Déploiement automatique](#déploiement-automatique)
+6. [Déploiement manuel](#déploiement-manuel)
+7. [Résolution des problèmes](#résolution-des-problèmes)
+
+## 🌐 Vue d'ensemble
+
+NaturaliQCM supporte le déploiement sur plusieurs plateformes :
+
+- **Web** : GitHub Pages, Netlify, Vercel
+- **Android** : Google Play Store (Internal, Beta, Production)
+- **iOS** : App Store (TestFlight, Production)
+
+### Documentation détaillée
+
+- 📱 **[Guide de déploiement Web complet](docs/DEPLOYMENT_WEB.md)** - Toutes les options web (GitHub Pages, Netlify, Vercel)
+- 🤖 **Android** - Configuration Google Play (voir ci-dessous)
+- 🍎 **iOS** - Configuration App Store (voir ci-dessous)
+
+## 🌐 Déploiement Web
+
+Pour un guide complet du déploiement web, consultez **[docs/DEPLOYMENT_WEB.md](docs/DEPLOYMENT_WEB.md)**.
+
+### Déploiement rapide
+
+#### GitHub Pages (déjà configuré)
+
+```bash
+# Automatique à chaque push sur main
+git push origin main
+
+# Ou via tag
+git tag v1.0.0-web
+git push origin v1.0.0-web
+```
+
+L'application sera disponible à : `https://naciro2010.github.io/NaturaliQCM/`
+
+#### Netlify (recommandé pour production)
+
+1. Configurer les secrets GitHub :
+   - `NETLIFY_AUTH_TOKEN`
+   - `NETLIFY_SITE_ID`
+
+2. Déployer :
+   ```bash
+   git push origin main
+   # ou
+   Actions → Deploy to Netlify → Run workflow
+   ```
+
+#### Preview des Pull Requests
+
+Chaque PR obtient automatiquement une URL de preview via Netlify !
+
+### Fonctionnalités web activées
+
+✅ **PWA complète** - Fonctionne offline, installable
+✅ **SEO optimisé** - Meta tags, Open Graph, Twitter Cards
+✅ **Performance** - Cache optimisé, CDN, compression
+✅ **Sécurité** - Headers CSP, HTTPS, protection XSS
+✅ **Monitoring** - Support Analytics intégré
 
 ## 🚀 Configuration initiale
 
