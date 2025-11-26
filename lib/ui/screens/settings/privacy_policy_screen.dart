@@ -21,55 +21,55 @@ class PrivacyPolicyScreen extends StatelessWidget {
             _buildSection(
               '1. Introduction',
               'NaturaliQCM est une application mobile 100% offline de préparation à l\'examen civique français. '
-              'Nous prenons la confidentialité de vos données très au sérieux.',
+                  'Nous prenons la confidentialité de vos données très au sérieux.',
             ),
             _buildSection(
               '2. Données collectées',
               'Les seules données collectées sont :\n'
-              '• Votre nom (que vous fournissez)\n'
-              '• Votre niveau de français (A1, A2, B1, B2)\n'
-              '• Vos réponses aux questions d\'entraînement et d\'examen\n'
-              '• Votre progression et statistiques\n'
-              '• Identifiants d\'authentification locale (FaceID/TouchID/Passkeys)',
+                  '• Votre nom (que vous fournissez)\n'
+                  '• Votre niveau de français (A1, A2, B1, B2)\n'
+                  '• Vos réponses aux questions d\'entraînement et d\'examen\n'
+                  '• Votre progression et statistiques\n'
+                  '• Identifiants d\'authentification locale (FaceID/TouchID/Passkeys)',
             ),
             _buildSection(
               '3. Stockage des données',
               'TOUTES vos données sont stockées UNIQUEMENT sur votre appareil dans une base de données SQLite locale chiffrée. '
-              'Aucune donnée n\'est jamais envoyée sur internet ou à des serveurs externes.',
+                  'Aucune donnée n\'est jamais envoyée sur internet ou à des serveurs externes.',
             ),
             _buildSection(
               '4. Utilisation des données',
               'Vos données sont utilisées exclusivement pour :\n'
-              '• Personnaliser votre expérience d\'apprentissage\n'
-              '• Suivre votre progression\n'
-              '• Générer des statistiques locales\n'
-              '• Adapter l\'algorithme de répétition espacée',
+                  '• Personnaliser votre expérience d\'apprentissage\n'
+                  '• Suivre votre progression\n'
+                  '• Générer des statistiques locales\n'
+                  '• Adapter l\'algorithme de répétition espacée',
             ),
             _buildSection(
               '5. Partage des données',
               'Nous ne partageons JAMAIS vos données avec des tiers. '
-              'L\'application fonctionne entièrement hors ligne et ne communique avec aucun serveur.',
+                  'L\'application fonctionne entièrement hors ligne et ne communique avec aucun serveur.',
             ),
             _buildSection(
               '6. Droits RGPD',
               'Conformément au RGPD, vous avez le droit de :\n'
-              '• Accéder à vos données (via l\'export dans les paramètres)\n'
-              '• Modifier vos données\n'
-              '• Supprimer toutes vos données (dans les paramètres)\n'
-              '• Exporter vos données au format CSV',
+                  '• Accéder à vos données (via l\'export dans les paramètres)\n'
+                  '• Modifier vos données\n'
+                  '• Supprimer toutes vos données (dans les paramètres)\n'
+                  '• Exporter vos données au format CSV',
             ),
             _buildSection(
               '7. Sécurité',
               'Vos données sont protégées par :\n'
-              '• Chiffrement de la base de données locale\n'
-              '• Authentification biométrique optionnelle\n'
-              '• Stockage sécurisé dans le Keychain (iOS) ou Keystore (Android)\n'
-              '• Aucune transmission réseau',
+                  '• Chiffrement de la base de données locale\n'
+                  '• Authentification biométrique optionnelle\n'
+                  '• Stockage sécurisé dans le Keychain (iOS) ou Keystore (Android)\n'
+                  '• Aucune transmission réseau',
             ),
             _buildSection(
               '8. Cookies et trackers',
               'Cette application n\'utilise AUCUN cookie, tracker, ou outil d\'analyse. '
-              'Il n\'y a aucune télémétrie.',
+                  'Il n\'y a aucune télémétrie.',
             ),
             _buildSection(
               '9. Modifications de cette politique',
@@ -145,13 +145,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          Text(
-            content,
-            style: const TextStyle(
-              fontSize: 15,
-              height: 1.5,
-            ),
-          ),
+          Text(content, style: const TextStyle(fontSize: 15, height: 1.5)),
         ],
       ),
     );

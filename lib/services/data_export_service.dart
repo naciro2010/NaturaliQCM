@@ -26,7 +26,10 @@ class DataExportService {
     final csvContent = _generateCSV(userProfile, sessions);
 
     // Sauvegarder et partager
-    await _saveAndShareCSV(csvContent, 'naturaliqcm_data_export_${DateTime.now().millisecondsSinceEpoch}.csv');
+    await _saveAndShareCSV(
+      csvContent,
+      'naturaliqcm_data_export_${DateTime.now().millisecondsSinceEpoch}.csv',
+    );
   }
 
   /// Génère le contenu CSV
@@ -35,56 +38,70 @@ class DataExportService {
 
     // En-tête du document
     buffer.writeln('NaturaliQCM - Export de données (RGPD)');
-    buffer.writeln('Date d\'export: ${DateFormat('dd/MM/yyyy HH:mm:ss').format(DateTime.now())}');
+    buffer.writeln(
+      'Date d\'export: ${DateFormat('dd/MM/yyyy HH:mm:ss').format(DateTime.now())}',
+    );
     buffer.writeln('');
 
     // Profil utilisateur
     buffer.writeln('=== PROFIL UTILISATEUR ===');
-    buffer.writeln('ID,Nom,Niveau de français,Date de création,Dernière activité,Authentification biométrique,Apple User ID,Passkey ID');
-    buffer.writeln([
-      userProfile['id'],
-      _escapeCsv(userProfile['name']),
-      _escapeCsv(userProfile['french_level']),
-      userProfile['created_at'],
-      userProfile['last_activity_at'] ?? '',
-      userProfile['biometric_enabled'] == 1 ? 'Oui' : 'Non',
-      _escapeCsv(userProfile['apple_user_id'] ?? ''),
-      _escapeCsv(userProfile['passkey_id'] ?? ''),
-    ].join(','));
+    buffer.writeln(
+      'ID,Nom,Niveau de français,Date de création,Dernière activité,Authentification biométrique,Apple User ID,Passkey ID',
+    );
+    buffer.writeln(
+      [
+        userProfile['id'],
+        _escapeCsv(userProfile['name']),
+        _escapeCsv(userProfile['french_level']),
+        userProfile['created_at'],
+        userProfile['last_activity_at'] ?? '',
+        userProfile['biometric_enabled'] == 1 ? 'Oui' : 'Non',
+        _escapeCsv(userProfile['apple_user_id'] ?? ''),
+        _escapeCsv(userProfile['passkey_id'] ?? ''),
+      ].join(','),
+    );
     buffer.writeln('');
 
     // Sessions d'examen
     buffer.writeln('=== SESSIONS D\'EXAMEN ===');
-    buffer.writeln('ID,Date de début,Date de fin,Statut,Score,Réussi,Durée (secondes),Nombre de réponses');
+    buffer.writeln(
+      'ID,Date de début,Date de fin,Statut,Score,Réussi,Durée (secondes),Nombre de réponses',
+    );
 
     for (final session in sessions) {
-      buffer.writeln([
-        session.id,
-        session.startedAt.toIso8601String(),
-        session.completedAt?.toIso8601String() ?? '',
-        session.status.name,
-        session.score ?? '',
-        session.passed != null ? (session.passed! ? 'Oui' : 'Non') : '',
-        session.durationSeconds,
-        session.answers.length,
-      ].join(','));
+      buffer.writeln(
+        [
+          session.id,
+          session.startedAt.toIso8601String(),
+          session.completedAt?.toIso8601String() ?? '',
+          session.status.name,
+          session.score ?? '',
+          session.passed != null ? (session.passed! ? 'Oui' : 'Non') : '',
+          session.durationSeconds,
+          session.answers.length,
+        ].join(','),
+      );
     }
     buffer.writeln('');
 
     // Détails des réponses pour chaque session
     for (final session in sessions) {
       buffer.writeln('=== DÉTAILS SESSION ${session.id} ===');
-      buffer.writeln('ID Réponse,ID Question,Thème,Choix sélectionné,Correct,Date de réponse');
+      buffer.writeln(
+        'ID Réponse,ID Question,Thème,Choix sélectionné,Correct,Date de réponse',
+      );
 
       for (final answer in session.answers) {
-        buffer.writeln([
-          answer.id,
-          answer.questionId,
-          answer.themeId,
-          answer.selectedChoiceId,
-          answer.isCorrect ? 'Oui' : 'Non',
-          answer.answeredAt.toIso8601String(),
-        ].join(','));
+        buffer.writeln(
+          [
+            answer.id,
+            answer.questionId,
+            answer.themeId,
+            answer.selectedChoiceId,
+            answer.isCorrect ? 'Oui' : 'Non',
+            answer.answeredAt.toIso8601String(),
+          ].join(','),
+        );
       }
       buffer.writeln('');
     }
@@ -92,14 +109,22 @@ class DataExportService {
     // Métadonnées
     buffer.writeln('=== MÉTADONNÉES ===');
     buffer.writeln('Nombre total de sessions: ${sessions.length}');
-    buffer.writeln('Nombre de sessions réussies: ${sessions.where((s) => s.passed == true).length}');
+    buffer.writeln(
+      'Nombre de sessions réussies: ${sessions.where((s) => s.passed == true).length}',
+    );
     buffer.writeln('');
 
     // Note de confidentialité
     buffer.writeln('=== NOTE DE CONFIDENTIALITÉ ===');
-    buffer.writeln('Ce fichier contient l\'intégralité de vos données personnelles stockées dans NaturaliQCM.');
-    buffer.writeln('Ces données sont stockées localement sur votre appareil et ne sont jamais transmises à des tiers.');
-    buffer.writeln('Vous pouvez à tout moment demander la suppression de vos données depuis les paramètres de l\'application.');
+    buffer.writeln(
+      'Ce fichier contient l\'intégralité de vos données personnelles stockées dans NaturaliQCM.',
+    );
+    buffer.writeln(
+      'Ces données sont stockées localement sur votre appareil et ne sont jamais transmises à des tiers.',
+    );
+    buffer.writeln(
+      'Vous pouvez à tout moment demander la suppression de vos données depuis les paramètres de l\'application.',
+    );
 
     return buffer.toString();
   }

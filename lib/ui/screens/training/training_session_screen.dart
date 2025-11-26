@@ -75,10 +75,10 @@ class _TrainingSessionScreenState extends State<TrainingSessionScreen> {
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _error.isNotEmpty
-              ? _buildError()
-              : _questionIds.isEmpty
-                  ? _buildNoQuestions()
-                  : _buildSessionReady(),
+          ? _buildError()
+          : _questionIds.isEmpty
+          ? _buildNoQuestions()
+          : _buildSessionReady(),
     );
   }
 
@@ -89,18 +89,11 @@ class _TrainingSessionScreenState extends State<TrainingSessionScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(
-              Icons.error_outline,
-              size: 64,
-              color: AppTheme.rougeRF,
-            ),
+            const Icon(Icons.error_outline, size: 64, color: AppTheme.rougeRF),
             const SizedBox(height: 16),
             const Text(
               'Erreur',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Text(
@@ -126,18 +119,11 @@ class _TrainingSessionScreenState extends State<TrainingSessionScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(
-              Icons.inbox,
-              size: 64,
-              color: Colors.grey,
-            ),
+            const Icon(Icons.inbox, size: 64, color: Colors.grey),
             const SizedBox(height: 16),
             const Text(
               'Aucune question disponible',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             const Text(
@@ -178,18 +164,12 @@ class _TrainingSessionScreenState extends State<TrainingSessionScreen> {
           const SizedBox(height: 24),
           const Text(
             'Session prête!',
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
           Text(
             '${_questionIds.length} questions sélectionnées',
-            style: const TextStyle(
-              fontSize: 18,
-              color: Colors.grey,
-            ),
+            style: const TextStyle(fontSize: 18, color: Colors.grey),
           ),
           const SizedBox(height: 8),
           Container(
@@ -218,10 +198,7 @@ class _TrainingSessionScreenState extends State<TrainingSessionScreen> {
                 Text(
                   'Feedback immédiat après chaque réponse\nAlgorithme de répétition espacée',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey[700],
-                  ),
+                  style: TextStyle(fontSize: 14, color: Colors.grey[700]),
                 ),
               ],
             ),
@@ -231,7 +208,9 @@ class _TrainingSessionScreenState extends State<TrainingSessionScreen> {
             onPressed: () async {
               // Charger les questions à partir de leurs IDs
               final questionRepo = QuestionRepository();
-              final questions = await questionRepo.getQuestionsByIds(_questionIds);
+              final questions = await questionRepo.getQuestionsByIds(
+                _questionIds,
+              );
 
               if (questions.isEmpty) {
                 if (mounted) {

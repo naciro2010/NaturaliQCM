@@ -85,11 +85,7 @@ class QuizResultsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(24.0),
         child: Column(
           children: [
-            Icon(
-              scoreIcon,
-              size: 64,
-              color: scoreColor,
-            ),
+            Icon(scoreIcon, size: 64, color: scoreColor),
             const SizedBox(height: 16),
             Text(
               scoreMessage,
@@ -111,10 +107,7 @@ class QuizResultsScreen extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               '$correctAnswers / $totalQuestions réponses correctes',
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.grey,
-              ),
+              style: const TextStyle(fontSize: 16, color: Colors.grey),
             ),
           ],
         ),
@@ -161,10 +154,7 @@ class QuizResultsScreen extends StatelessWidget {
           children: [
             const Text(
               'Statistiques détaillées',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
             ...statsByDifficulty.entries.map((entry) {
@@ -241,10 +231,7 @@ class QuizResultsScreen extends StatelessWidget {
             Icon(icon, color: color, size: 32),
             const SizedBox(width: 16),
             Expanded(
-              child: Text(
-                message,
-                style: const TextStyle(fontSize: 14),
-              ),
+              child: Text(message, style: const TextStyle(fontSize: 14)),
             ),
           ],
         ),
@@ -261,10 +248,7 @@ class QuizResultsScreen extends StatelessWidget {
           children: [
             const Text(
               'Détail des réponses',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
             ...questions.asMap().entries.map((entry) {
@@ -274,8 +258,7 @@ class QuizResultsScreen extends StatelessWidget {
 
               return ListTile(
                 leading: CircleAvatar(
-                  backgroundColor:
-                      isCorrect ? Colors.green : Colors.red,
+                  backgroundColor: isCorrect ? Colors.green : Colors.red,
                   child: Icon(
                     isCorrect ? Icons.check : Icons.close,
                     color: Colors.white,
@@ -350,7 +333,10 @@ class QuizResultsScreen extends StatelessWidget {
   }
 
   void _showQuestionDetail(
-      BuildContext context, QuestionModel question, int index) {
+    BuildContext context,
+    QuestionModel question,
+    int index,
+  ) {
     final isCorrect = answerResults[question.id] ?? false;
     final selectedChoiceId = userAnswers[question.id];
     final selectedChoice = question.choices.firstWhere(
@@ -396,7 +382,9 @@ class QuizResultsScreen extends StatelessWidget {
                       'Votre réponse :',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: isCorrect ? Colors.green.shade700 : Colors.red.shade700,
+                        color: isCorrect
+                            ? Colors.green.shade700
+                            : Colors.red.shade700,
                       ),
                     ),
                     const SizedBox(height: 4),

@@ -44,17 +44,19 @@ class _LessonDetailScreenState extends State<LessonDetailScreen> {
       final lesson = await _lessonRepo.getLessonById(widget.lessonId);
       if (lesson == null) {
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Leçon introuvable')),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(const SnackBar(content: Text('Leçon introuvable')));
           Navigator.of(context).pop();
         }
         return;
       }
 
       // Charge la progression
-      final progress =
-          await _lessonRepo.getLessonProgress(_userId!, widget.lessonId);
+      final progress = await _lessonRepo.getLessonProgress(
+        _userId!,
+        widget.lessonId,
+      );
 
       // Si pas encore commencée, démarre la leçon
       if (progress == null) {
@@ -69,9 +71,9 @@ class _LessonDetailScreenState extends State<LessonDetailScreen> {
     } catch (e) {
       setState(() => _isLoading = false);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Erreur: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Erreur: $e')));
       }
     }
   }
@@ -94,9 +96,9 @@ class _LessonDetailScreenState extends State<LessonDetailScreen> {
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Erreur: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Erreur: $e')));
       }
     }
   }
@@ -112,154 +114,145 @@ class _LessonDetailScreenState extends State<LessonDetailScreen> {
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _lesson == null
-              ? const Center(child: Text('Leçon introuvable'))
-              : Column(
-                  children: [
-                    // En-tête de la leçon
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: AppTheme.bleuRF.withOpacity(0.1),
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Colors.grey[300]!,
-                            width: 1,
-                          ),
+          ? const Center(child: Text('Leçon introuvable'))
+          : Column(
+              children: [
+                // En-tête de la leçon
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: AppTheme.bleuRF.withOpacity(0.1),
+                    border: Border(
+                      bottom: BorderSide(color: Colors.grey[300]!, width: 1),
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        _lesson!.title,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      const SizedBox(height: 8),
+                      Row(
                         children: [
+                          Icon(
+                            Icons.access_time,
+                            size: 16,
+                            color: Colors.grey[600],
+                          ),
+                          const SizedBox(width: 4),
                           Text(
-                            _lesson!.title,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
+                            '${_lesson!.durationMinutes} minutes de lecture',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey[600],
                             ),
                           ),
-                          const SizedBox(height: 8),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.access_time,
-                                size: 16,
-                                color: Colors.grey[600],
+                          const Spacer(),
+                          if (_progress?.isCompleted ?? false)
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 4,
                               ),
-                              const SizedBox(width: 4),
-                              Text(
-                                '${_lesson!.durationMinutes} minutes de lecture',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.grey[600],
-                                ),
+                              decoration: BoxDecoration(
+                                color: Colors.green,
+                                borderRadius: BorderRadius.circular(4),
                               ),
-                              const Spacer(),
-                              if (_progress?.isCompleted ?? false)
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 8,
-                                    vertical: 4,
+                              child: const Row(
+                                children: [
+                                  Icon(
+                                    Icons.check,
+                                    size: 16,
+                                    color: Colors.white,
                                   ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.green,
-                                    borderRadius: BorderRadius.circular(4),
+                                  SizedBox(width: 4),
+                                  Text(
+                                    'Complété',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                  child: const Row(
-                                    children: [
-                                      Icon(
-                                        Icons.check,
-                                        size: 16,
-                                        color: Colors.white,
-                                      ),
-                                      SizedBox(width: 4),
-                                      Text(
-                                        'Complété',
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                            ],
-                          ),
+                                ],
+                              ),
+                            ),
                         ],
                       ),
-                    ),
-                    // Contenu de la leçon
-                    Expanded(
-                      child: Markdown(
-                        data: _lesson!.content,
-                        padding: const EdgeInsets.all(16),
-                        styleSheet: MarkdownStyleSheet(
-                          h1: const TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: AppTheme.bleuRF,
-                          ),
-                          h2: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: AppTheme.bleuRF,
-                          ),
-                          h3: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: AppTheme.bleuRF,
-                          ),
-                          p: const TextStyle(
-                            fontSize: 16,
-                            height: 1.5,
-                          ),
-                          listBullet: const TextStyle(
-                            fontSize: 16,
-                            color: AppTheme.bleuRF,
-                          ),
-                          strong: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: AppTheme.bleuRF,
-                          ),
-                          blockquote: TextStyle(
-                            color: Colors.grey[700],
-                            fontStyle: FontStyle.italic,
-                          ),
-                          blockquoteDecoration: BoxDecoration(
-                            color: Colors.grey[200],
-                            borderRadius: BorderRadius.circular(4),
-                            border: Border(
-                              left: BorderSide(
-                                color: AppTheme.bleuRF,
-                                width: 4,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    // Bouton pour terminer
-                    if (!(_progress?.isCompleted ?? false))
-                      Container(
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
-                              blurRadius: 4,
-                              offset: const Offset(0, -2),
-                            ),
-                          ],
-                        ),
-                        child: PrimaryButton(
-                          onPressed: _completeLesson,
-                          text: 'Marquer comme terminé',
-                        ),
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
+                // Contenu de la leçon
+                Expanded(
+                  child: Markdown(
+                    data: _lesson!.content,
+                    padding: const EdgeInsets.all(16),
+                    styleSheet: MarkdownStyleSheet(
+                      h1: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: AppTheme.bleuRF,
+                      ),
+                      h2: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: AppTheme.bleuRF,
+                      ),
+                      h3: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: AppTheme.bleuRF,
+                      ),
+                      p: const TextStyle(fontSize: 16, height: 1.5),
+                      listBullet: const TextStyle(
+                        fontSize: 16,
+                        color: AppTheme.bleuRF,
+                      ),
+                      strong: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: AppTheme.bleuRF,
+                      ),
+                      blockquote: TextStyle(
+                        color: Colors.grey[700],
+                        fontStyle: FontStyle.italic,
+                      ),
+                      blockquoteDecoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: BorderRadius.circular(4),
+                        border: Border(
+                          left: BorderSide(color: AppTheme.bleuRF, width: 4),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                // Bouton pour terminer
+                if (!(_progress?.isCompleted ?? false))
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 4,
+                          offset: const Offset(0, -2),
+                        ),
+                      ],
+                    ),
+                    child: PrimaryButton(
+                      onPressed: _completeLesson,
+                      text: 'Marquer comme terminé',
+                    ),
+                  ),
+              ],
+            ),
     );
   }
 }

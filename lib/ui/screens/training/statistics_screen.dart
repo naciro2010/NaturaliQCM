@@ -34,8 +34,9 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
 
       final userId = userProfile['id'] as int;
 
-      final overallStats =
-          await _spacedRepService.getProgressStatistics(userId);
+      final overallStats = await _spacedRepService.getProgressStatistics(
+        userId,
+      );
       final statsByTheme = await _spacedRepService.getProgressByTheme(userId);
 
       setState(() {
@@ -46,9 +47,9 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
     } catch (e) {
       setState(() => _isLoading = false);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Erreur: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Erreur: $e')));
       }
     }
   }
@@ -96,10 +97,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
           children: [
             const Text(
               'Statistiques globales',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
             Row(
@@ -153,18 +151,15 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                 successRate >= 0.8
                     ? Colors.green
                     : successRate >= 0.6
-                        ? Colors.orange
-                        : Colors.red,
+                    ? Colors.orange
+                    : Colors.red,
               ),
               minHeight: 8,
             ),
             const SizedBox(height: 8),
             Text(
               'Box moyenne: ${avgBox.toStringAsFixed(1)}/5',
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey[600],
-              ),
+              style: TextStyle(fontSize: 14, color: Colors.grey[600]),
             ),
           ],
         ),
@@ -173,7 +168,11 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   }
 
   Widget _buildStatCard(
-      String label, String value, IconData icon, Color color) {
+    String label,
+    String value,
+    IconData icon,
+    Color color,
+  ) {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -196,10 +195,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
           Text(
             label,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 12,
-              color: Colors.grey[700],
-            ),
+            style: TextStyle(fontSize: 12, color: Colors.grey[700]),
           ),
         ],
       ),
@@ -212,10 +208,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
       children: [
         const Text(
           'Progression par thème',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
         ...ThemeModel.officialThemes.map((theme) {
@@ -296,8 +289,8 @@ class _ThemeStatCard extends StatelessWidget {
                     successRate >= 0.8
                         ? Colors.green
                         : successRate >= 0.6
-                            ? Colors.orange
-                            : Colors.red,
+                        ? Colors.orange
+                        : Colors.red,
                   ),
                   minHeight: 8,
                 ),
@@ -305,10 +298,7 @@ class _ThemeStatCard extends StatelessWidget {
               const SizedBox(height: 4),
               Text(
                 'Taux de réussite: ${(successRate * 100).toStringAsFixed(1)}%',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey[600],
-                ),
+                style: TextStyle(fontSize: 14, color: Colors.grey[600]),
               ),
             ] else ...[
               const SizedBox(height: 12),
@@ -338,13 +328,7 @@ class _ThemeStatCard extends StatelessWidget {
             color: AppTheme.bleuRF,
           ),
         ),
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 12,
-            color: Colors.grey[600],
-          ),
-        ),
+        Text(label, style: TextStyle(fontSize: 12, color: Colors.grey[600])),
       ],
     );
   }

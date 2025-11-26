@@ -1,12 +1,5 @@
 /// Niveau de français auto-évalué
-enum FrenchLevel {
-  a1,
-  a2,
-  b1,
-  b2,
-  c1,
-  c2,
-}
+enum FrenchLevel { a1, a2, b1, b2, c1, c2 }
 
 /// Modèle de profil utilisateur local (100% offline)
 class UserProfileModel {

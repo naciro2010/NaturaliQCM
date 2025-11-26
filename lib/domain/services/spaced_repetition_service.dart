@@ -7,13 +7,7 @@ class SpacedRepetitionService {
 
   /// Intervalles de révision par box (en jours)
   /// Box 1: 1 jour, Box 2: 3 jours, Box 3: 7 jours, Box 4: 14 jours, Box 5: 30 jours
-  static const Map<int, int> _boxIntervals = {
-    1: 1,
-    2: 3,
-    3: 7,
-    4: 14,
-    5: 30,
-  };
+  static const Map<int, int> _boxIntervals = {1: 1, 2: 3, 3: 7, 4: 14, 5: 30};
 
   /// Enregistre la réponse à une question
   Future<void> recordAnswer({
@@ -144,7 +138,8 @@ class SpacedRepetitionService {
   Future<Map<String, dynamic>> getProgressStatistics(int userId) async {
     final db = await _dbHelper.database;
 
-    final stats = await db.rawQuery('''
+    final stats = await db.rawQuery(
+      '''
       SELECT
         COUNT(*) as total_questions_seen,
         SUM(times_correct) as total_correct,
@@ -153,7 +148,9 @@ class SpacedRepetitionService {
         COUNT(CASE WHEN next_review_at <= datetime('now') THEN 1 END) as due_for_review
       FROM user_progress
       WHERE user_id = ?
-    ''', [userId]);
+    ''',
+      [userId],
+    );
 
     if (stats.isEmpty) {
       return {
@@ -184,7 +181,8 @@ class SpacedRepetitionService {
   Future<Map<int, Map<String, dynamic>>> getProgressByTheme(int userId) async {
     final db = await _dbHelper.database;
 
-    final results = await db.rawQuery('''
+    final results = await db.rawQuery(
+      '''
       SELECT
         q.theme_id,
         COUNT(*) as questions_seen,
@@ -195,7 +193,9 @@ class SpacedRepetitionService {
       JOIN questions q ON up.question_id = q.id
       WHERE up.user_id = ?
       GROUP BY q.theme_id
-    ''', [userId]);
+    ''',
+      [userId],
+    );
 
     final Map<int, Map<String, dynamic>> statsByTheme = {};
 

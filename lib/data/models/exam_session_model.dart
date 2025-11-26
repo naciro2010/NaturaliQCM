@@ -1,11 +1,7 @@
 import 'question_model.dart';
 
 /// Statut d'une session d'examen
-enum ExamSessionStatus {
-  inProgress,
-  completed,
-  abandoned,
-}
+enum ExamSessionStatus { inProgress, completed, abandoned }
 
 /// Modèle de session d'examen conforme aux exigences réglementaires
 /// 40 questions, 45 minutes max, réussite ≥ 80% (32/40)
@@ -115,8 +111,8 @@ class ExamSessionModel {
       breakdown[themeId] = ThemeScoreBreakdown(
         themeId: themeId,
         totalQuestions: breakdown[themeId]!.totalQuestions + 1,
-        correctAnswers: breakdown[themeId]!.correctAnswers +
-            (answer.isCorrect ? 1 : 0),
+        correctAnswers:
+            breakdown[themeId]!.correctAnswers + (answer.isCorrect ? 1 : 0),
       );
     }
 

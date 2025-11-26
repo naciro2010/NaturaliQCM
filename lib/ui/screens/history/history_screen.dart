@@ -49,9 +49,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
     } catch (e) {
       setState(() => _isLoading = false);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Erreur: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Erreur: $e')));
       }
     }
   }
@@ -61,13 +61,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
     switch (_filter) {
       case 'passed':
-        return _sessions!
-            .where((s) => s.passed == true)
-            .toList();
+        return _sessions!.where((s) => s.passed == true).toList();
       case 'failed':
-        return _sessions!
-            .where((s) => s.passed == false)
-            .toList();
+        return _sessions!.where((s) => s.passed == false).toList();
       default:
         return _sessions!
             .where((s) => s.status == ExamSessionStatus.completed)
@@ -125,11 +121,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.history,
-            size: 80,
-            color: Colors.grey[400],
-          ),
+          Icon(Icons.history, size: 80, color: Colors.grey[400]),
           const SizedBox(height: 16),
           Text(
             'Aucune session enregistrée',
@@ -142,10 +134,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           const SizedBox(height: 8),
           Text(
             'Commencez un entraînement ou un examen',
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.grey[600],
-            ),
+            style: TextStyle(fontSize: 14, color: Colors.grey[600]),
           ),
           const SizedBox(height: 24),
           ElevatedButton.icon(
@@ -171,10 +160,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              AppTheme.bleuRF,
-              AppTheme.bleuRF.withOpacity(0.8),
-            ],
+            colors: [AppTheme.bleuRF, AppTheme.bleuRF.withOpacity(0.8)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -261,10 +247,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
             const SizedBox(height: 8),
             Text(
               'Taux de réussite: ${(successRate * 100).toStringAsFixed(1)}%',
-              style: const TextStyle(
-                fontSize: 14,
-                color: Colors.white70,
-              ),
+              style: const TextStyle(fontSize: 14, color: Colors.white70),
             ),
           ],
         ),
@@ -295,10 +278,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           Text(
             label,
             textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 12,
-              color: Colors.white70,
-            ),
+            style: const TextStyle(fontSize: 12, color: Colors.white70),
           ),
         ],
       ),
@@ -344,10 +324,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           padding: const EdgeInsets.all(32),
           child: Text(
             'Aucune session correspondante',
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.grey[600],
-            ),
+            style: TextStyle(fontSize: 16, color: Colors.grey[600]),
           ),
         ),
       );
@@ -358,16 +335,15 @@ class _HistoryScreenState extends State<HistoryScreen> {
       children: [
         Text(
           '${sessions.length} session${sessions.length > 1 ? 's' : ''}',
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
-        ...sessions.map((session) => _SessionCard(
-              session: session,
-              onTap: () => context.push('/history/session/${session.id}'),
-            )),
+        ...sessions.map(
+          (session) => _SessionCard(
+            session: session,
+            onTap: () => context.push('/history/session/${session.id}'),
+          ),
+        ),
       ],
     );
   }
@@ -419,17 +395,15 @@ class _SessionCard extends StatelessWidget {
   final ExamSessionModel session;
   final VoidCallback onTap;
 
-  const _SessionCard({
-    required this.session,
-    required this.onTap,
-  });
+  const _SessionCard({required this.session, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     final isPassed = session.passed == true;
     final dateFormat = DateFormat('dd/MM/yyyy à HH:mm');
     final duration = Duration(seconds: session.durationSeconds);
-    final durationStr = '${duration.inMinutes}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
+    final durationStr =
+        '${duration.inMinutes}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
 
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
@@ -493,10 +467,7 @@ class _SessionCard extends StatelessWidget {
                       ),
                       Text(
                         '${((session.score ?? 0) / 40 * 100).toStringAsFixed(0)}%',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey[600],
-                        ),
+                        style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                       ),
                     ],
                   ),
@@ -518,10 +489,7 @@ class _SessionCard extends StatelessWidget {
                       const SizedBox(width: 4),
                       Text(
                         'Durée: $durationStr',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey[600],
-                        ),
+                        style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                       ),
                     ],
                   ),
@@ -535,10 +503,7 @@ class _SessionCard extends StatelessWidget {
                       const SizedBox(width: 4),
                       Text(
                         '${session.answers.length} réponses',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey[600],
-                        ),
+                        style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                       ),
                     ],
                   ),

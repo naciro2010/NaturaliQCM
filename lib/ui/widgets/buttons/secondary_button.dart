@@ -57,13 +57,8 @@ class SecondaryButton extends StatelessWidget {
     return OutlinedButton.styleFrom(
       foregroundColor: Theme.of(context).colorScheme.primary,
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
-      side: BorderSide(
-        color: Theme.of(context).colorScheme.primary,
-        width: 2,
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      side: BorderSide(color: Theme.of(context).colorScheme.primary, width: 2),
     );
   }
 }

@@ -108,19 +108,13 @@ class BiometricAuthResult {
   final bool isSuccess;
   final String? errorMessage;
 
-  BiometricAuthResult._({
-    required this.isSuccess,
-    this.errorMessage,
-  });
+  BiometricAuthResult._({required this.isSuccess, this.errorMessage});
 
   factory BiometricAuthResult.success() {
     return BiometricAuthResult._(isSuccess: true);
   }
 
   factory BiometricAuthResult.failure(String message) {
-    return BiometricAuthResult._(
-      isSuccess: false,
-      errorMessage: message,
-    );
+    return BiometricAuthResult._(isSuccess: false, errorMessage: message);
   }
 }

@@ -78,7 +78,9 @@ class QuestionCard extends StatelessWidget {
             }
           } else if (isSelected) {
             // Réponse sélectionnée (avant validation)
-            backgroundColor = Theme.of(context).colorScheme.primary.withOpacity(0.1);
+            backgroundColor = Theme.of(
+              context,
+            ).colorScheme.primary.withOpacity(0.1);
             borderColor = Theme.of(context).colorScheme.primary;
             icon = Icons.radio_button_checked;
             iconColor = Theme.of(context).colorScheme.primary;
@@ -105,11 +107,7 @@ class QuestionCard extends StatelessWidget {
                   children: [
                     // Icône de sélection/validation
                     if (icon != null) ...[
-                      Icon(
-                        icon,
-                        color: iconColor,
-                        size: 24,
-                      ),
+                      Icon(icon, color: iconColor, size: 24),
                       const SizedBox(width: 12),
                     ] else ...[
                       Icon(
@@ -126,7 +124,8 @@ class QuestionCard extends StatelessWidget {
                         choice.choiceText,
                         style: TextStyle(
                           fontSize: 16,
-                          fontWeight: isSelected || (showCorrectAnswer && isCorrect)
+                          fontWeight:
+                              isSelected || (showCorrectAnswer && isCorrect)
                               ? FontWeight.w600
                               : FontWeight.normal,
                           color: showCorrectAnswer && !isCorrect && isSelected

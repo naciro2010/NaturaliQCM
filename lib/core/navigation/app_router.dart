@@ -73,7 +73,9 @@ class AppRouter {
           name: 'training-session',
           builder: (context, state) {
             final themeIdStr = state.uri.queryParameters['themeId'];
-            final themeId = themeIdStr != null ? int.tryParse(themeIdStr) : null;
+            final themeId = themeIdStr != null
+                ? int.tryParse(themeIdStr)
+                : null;
             return TrainingSessionScreen(themeId: themeId);
           },
         ),
@@ -182,18 +184,12 @@ class AppRouter {
 
       // Gestion des erreurs de navigation
       errorBuilder: (context, state) => Scaffold(
-        appBar: AppBar(
-          title: const Text('Erreur'),
-        ),
+        appBar: AppBar(title: const Text('Erreur')),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(
-                Icons.error_outline,
-                size: 64,
-                color: Colors.red,
-              ),
+              const Icon(Icons.error_outline, size: 64, color: Colors.red),
               const SizedBox(height: 16),
               const Text(
                 'Page non trouvée',

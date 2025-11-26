@@ -11,10 +11,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: PrimaryButton(
-              label: label,
-              onPressed: () => pressed = true,
-            ),
+            body: PrimaryButton(label: label, onPressed: () => pressed = true),
           ),
         ),
       );
@@ -29,10 +26,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: PrimaryButton(
-              label: 'Test',
-              onPressed: () => pressed = true,
-            ),
+            body: PrimaryButton(label: 'Test', onPressed: () => pressed = true),
           ),
         ),
       );
@@ -41,8 +35,9 @@ void main() {
       expect(pressed, isTrue);
     });
 
-    testWidgets('shows loading indicator when isLoading is true',
-        (WidgetTester tester) async {
+    testWidgets('shows loading indicator when isLoading is true', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
@@ -58,8 +53,9 @@ void main() {
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
     });
 
-    testWidgets('disables button when isLoading is true',
-        (WidgetTester tester) async {
+    testWidgets('disables button when isLoading is true', (
+      WidgetTester tester,
+    ) async {
       var pressed = false;
 
       await tester.pumpWidget(
@@ -79,8 +75,7 @@ void main() {
       expect(pressed, isFalse);
     });
 
-    testWidgets('renders with icon when provided',
-        (WidgetTester tester) async {
+    testWidgets('renders with icon when provided', (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -93,8 +88,16 @@ void main() {
         ),
       );
 
-      expect(find.byIcon(Icons.check), findsOneWidget);
-      expect(find.byType(ElevatedButton), findsOneWidget);
+      // Find the Icon widget within the button
+      final iconFinder = find.descendant(
+        of: find.byType(ElevatedButton),
+        matching: find.byType(Icon),
+      );
+      expect(iconFinder, findsOneWidget);
+
+      // Verify the icon data
+      final Icon iconWidget = tester.widget(iconFinder);
+      expect(iconWidget.icon, equals(Icons.check));
     });
 
     testWidgets('respects fullWidth parameter', (WidgetTester tester) async {
@@ -134,8 +137,7 @@ void main() {
         find.ancestor(
           of: find.text('Not Full Width'),
           matching: find.byWidgetPredicate(
-            (widget) =>
-                widget is SizedBox && widget.width == double.infinity,
+            (widget) => widget is SizedBox && widget.width == double.infinity,
           ),
         ),
         findsNothing,

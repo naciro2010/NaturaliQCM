@@ -28,7 +28,8 @@ class _ExamScreenState extends State<ExamScreen> {
   int? _userId;
 
   Timer? _timer;
-  int _remainingSeconds = ExamSessionModel.maxDurationMinutes * 60; // 45 min = 2700 sec
+  int _remainingSeconds =
+      ExamSessionModel.maxDurationMinutes * 60; // 45 min = 2700 sec
   DateTime? _startTime;
 
   bool _isLoading = true;
@@ -77,9 +78,9 @@ class _ExamScreenState extends State<ExamScreen> {
     } catch (e) {
       setState(() => _isLoading = false);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Erreur: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Erreur: $e')));
         context.pop();
       }
     }
@@ -143,7 +144,9 @@ class _ExamScreenState extends State<ExamScreen> {
                 children: [
                   Icon(
                     Icons.timer,
-                    color: _remainingSeconds < 300 ? Colors.yellow : Colors.white,
+                    color: _remainingSeconds < 300
+                        ? Colors.yellow
+                        : Colors.white,
                     size: 20,
                   ),
                   const SizedBox(width: 8),
@@ -152,8 +155,9 @@ class _ExamScreenState extends State<ExamScreen> {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color:
-                          _remainingSeconds < 300 ? Colors.yellow : Colors.white,
+                      color: _remainingSeconds < 300
+                          ? Colors.yellow
+                          : Colors.white,
                     ),
                   ),
                 ],
@@ -205,10 +209,7 @@ class _ExamScreenState extends State<ExamScreen> {
               const SizedBox(height: 8),
               Text(
                 '${_selectedAnswers.length} réponses données',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey[600],
-                ),
+                style: TextStyle(fontSize: 14, color: Colors.grey[600]),
               ),
             ],
           ),
@@ -289,8 +290,9 @@ class _ExamScreenState extends State<ExamScreen> {
                     : 'Suivant',
               ),
               style: ElevatedButton.styleFrom(
-                backgroundColor:
-                    isLastQuestion && allAnswered ? Colors.green : AppTheme.bleuRF,
+                backgroundColor: isLastQuestion && allAnswered
+                    ? Colors.green
+                    : AppTheme.bleuRF,
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(vertical: 16),
               ),
@@ -312,7 +314,9 @@ class _ExamScreenState extends State<ExamScreen> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Questions répondues: ${_selectedAnswers.length}/${_questions!.length}'),
+            Text(
+              'Questions répondues: ${_selectedAnswers.length}/${_questions!.length}',
+            ),
             if (unanswered > 0) ...[
               const SizedBox(height: 8),
               Text(
@@ -401,8 +405,9 @@ class _ExamScreenState extends State<ExamScreen> {
 
         bool isCorrect = false;
         if (selectedChoiceId != null) {
-          final selectedChoice =
-              question.choices.firstWhere((c) => c.id == selectedChoiceId);
+          final selectedChoice = question.choices.firstWhere(
+            (c) => c.id == selectedChoiceId,
+          );
           isCorrect = selectedChoice.isCorrect;
           if (isCorrect) correctAnswers++;
         }

@@ -11,10 +11,7 @@ import '../../themes/app_theme.dart';
 class SessionDetailScreen extends StatefulWidget {
   final int sessionId;
 
-  const SessionDetailScreen({
-    super.key,
-    required this.sessionId,
-  });
+  const SessionDetailScreen({super.key, required this.sessionId});
 
   @override
   State<SessionDetailScreen> createState() => _SessionDetailScreenState();
@@ -39,8 +36,8 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
 
     try {
       final session = await _sessionRepository.getSessionById(widget.sessionId);
-      final answersWithQuestions =
-          await _sessionRepository.getSessionAnswersWithQuestions(widget.sessionId);
+      final answersWithQuestions = await _sessionRepository
+          .getSessionAnswersWithQuestions(widget.sessionId);
 
       setState(() {
         _session = session;
@@ -50,9 +47,9 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
     } catch (e) {
       setState(() => _isLoading = false);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Erreur: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Erreur: $e')));
       }
     }
   }
@@ -80,9 +77,7 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
 
   Widget _buildContent() {
     if (_session == null) {
-      return const Center(
-        child: Text('Session non trouvée'),
-      );
+      return const Center(child: Text('Session non trouvée'));
     }
 
     return SingleChildScrollView(
@@ -142,30 +137,15 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
             const SizedBox(height: 8),
             Text(
               dateFormat.format(_session!.startedAt),
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.white70,
-              ),
+              style: const TextStyle(fontSize: 16, color: Colors.white70),
             ),
             const SizedBox(height: 24),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildSummaryItem(
-                  'Score',
-                  '${_session!.score}/40',
-                  Icons.star,
-                ),
-                _buildSummaryItem(
-                  'Pourcentage',
-                  '$percentage%',
-                  Icons.percent,
-                ),
-                _buildSummaryItem(
-                  'Durée',
-                  durationStr,
-                  Icons.access_time,
-                ),
+                _buildSummaryItem('Score', '${_session!.score}/40', Icons.star),
+                _buildSummaryItem('Pourcentage', '$percentage%', Icons.percent),
+                _buildSummaryItem('Durée', durationStr, Icons.access_time),
               ],
             ),
             const SizedBox(height: 16),
@@ -183,10 +163,7 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
               isPassed
                   ? 'Seuil de réussite: 32/40 (80%)'
                   : 'Seuil de réussite non atteint: 32/40 (80%) requis',
-              style: const TextStyle(
-                fontSize: 14,
-                color: Colors.white70,
-              ),
+              style: const TextStyle(fontSize: 14, color: Colors.white70),
             ),
           ],
         ),
@@ -210,10 +187,7 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
         const SizedBox(height: 4),
         Text(
           label,
-          style: const TextStyle(
-            fontSize: 14,
-            color: Colors.white70,
-          ),
+          style: const TextStyle(fontSize: 14, color: Colors.white70),
         ),
       ],
     );
@@ -227,20 +201,14 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
       children: [
         const Text(
           'Résultats par thème',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
         ...ThemeModel.officialThemes.map((theme) {
           final themeBreakdown = breakdown[theme.id];
           if (themeBreakdown == null) return const SizedBox.shrink();
 
-          return _ThemeBreakdownCard(
-            theme: theme,
-            breakdown: themeBreakdown,
-          );
+          return _ThemeBreakdownCard(theme: theme, breakdown: themeBreakdown);
         }).toList(),
       ],
     );
@@ -256,19 +224,13 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
       children: [
         const Text(
           'Toutes les réponses',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
         ..._answersWithQuestions!.asMap().entries.map((entry) {
           final index = entry.key;
           final answerData = entry.value;
-          return _AnswerCard(
-            questionNumber: index + 1,
-            answerData: answerData,
-          );
+          return _AnswerCard(questionNumber: index + 1, answerData: answerData);
         }).toList(),
       ],
     );
@@ -277,9 +239,7 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
   void _shareSession() {
     // TODO: Implémenter le partage (export CSV/PDF)
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Fonctionnalité de partage à venir'),
-      ),
+      const SnackBar(content: Text('Fonctionnalité de partage à venir')),
     );
   }
 }
@@ -289,10 +249,7 @@ class _ThemeBreakdownCard extends StatelessWidget {
   final ThemeModel theme;
   final ThemeScoreBreakdown breakdown;
 
-  const _ThemeBreakdownCard({
-    required this.theme,
-    required this.breakdown,
-  });
+  const _ThemeBreakdownCard({required this.theme, required this.breakdown});
 
   @override
   Widget build(BuildContext context) {
@@ -335,10 +292,7 @@ class _ThemeBreakdownCard extends StatelessWidget {
                       const SizedBox(height: 4),
                       Text(
                         '${breakdown.correctAnswers}/${breakdown.totalQuestions} correctes',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey[600],
-                        ),
+                        style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                       ),
                     ],
                   ),
@@ -404,10 +358,7 @@ class _AnswerCard extends StatelessWidget {
   final int questionNumber;
   final Map<String, dynamic> answerData;
 
-  const _AnswerCard({
-    required this.questionNumber,
-    required this.answerData,
-  });
+  const _AnswerCard({required this.questionNumber, required this.answerData});
 
   @override
   Widget build(BuildContext context) {
@@ -438,9 +389,7 @@ class _AnswerCard extends StatelessWidget {
         ),
         title: Text(
           'Question $questionNumber',
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         subtitle: Text(
           isCorrect ? 'Bonne réponse' : 'Mauvaise réponse',
@@ -458,16 +407,10 @@ class _AnswerCard extends StatelessWidget {
               children: [
                 const Text(
                   'Question:',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                  ),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                 ),
                 const SizedBox(height: 8),
-                Text(
-                  questionText,
-                  style: const TextStyle(fontSize: 15),
-                ),
+                Text(questionText, style: const TextStyle(fontSize: 15)),
                 if (explanation != null && explanation.isNotEmpty) ...[
                   const SizedBox(height: 16),
                   Container(
@@ -475,17 +418,18 @@ class _AnswerCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: Colors.blue.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                        color: Colors.blue.withOpacity(0.3),
-                      ),
+                      border: Border.all(color: Colors.blue.withOpacity(0.3)),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Row(
                           children: [
-                            Icon(Icons.lightbulb_outline,
-                                size: 18, color: Colors.blue),
+                            Icon(
+                              Icons.lightbulb_outline,
+                              size: 18,
+                              color: Colors.blue,
+                            ),
                             SizedBox(width: 8),
                             Text(
                               'Explication:',
@@ -498,10 +442,7 @@ class _AnswerCard extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 8),
-                        Text(
-                          explanation,
-                          style: const TextStyle(fontSize: 14),
-                        ),
+                        Text(explanation, style: const TextStyle(fontSize: 14)),
                       ],
                     ),
                   ),

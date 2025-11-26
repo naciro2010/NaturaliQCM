@@ -60,8 +60,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   Text(
                     'Modes de pratique',
                     style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const SizedBox(height: 16),
 
@@ -88,8 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   InfoCard(
                     title: 'Examen blanc officiel',
-                    subtitle:
-                        '40 questions en conditions réelles - 45 minutes',
+                    subtitle: '40 questions en conditions réelles - 45 minutes',
                     icon: Icons.quiz,
                     iconColor: const Color(0xFFE1000F),
                     onTap: () => context.push('/exam'),
@@ -102,8 +101,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   Text(
                     'Suivi',
                     style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const SizedBox(height: 16),
 
@@ -127,9 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Card(
       elevation: 4,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -168,11 +165,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Text(
                         'Bonjour, $name',
-                        style:
-                            Theme.of(context).textTheme.headlineSmall?.copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                        style: Theme.of(context).textTheme.headlineSmall
+                            ?.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
                       ),
                       const SizedBox(height: 4),
                       Container(
@@ -186,11 +183,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         child: Text(
                           'Niveau: $frenchLevel',
-                          style:
-                              Theme.of(context).textTheme.bodySmall?.copyWith(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                          style: Theme.of(context).textTheme.bodySmall
+                              ?.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                              ),
                         ),
                       ),
                     ],
@@ -204,11 +201,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildStatItem(
-                  context,
-                  Icons.psychology,
-                  'Prêt à apprendre',
-                ),
+                _buildStatItem(context, Icons.psychology, 'Prêt à apprendre'),
                 _buildStatItem(
                   context,
                   Icons.workspace_premium,
@@ -229,9 +222,9 @@ class _HomeScreenState extends State<HomeScreen> {
         const SizedBox(width: 8),
         Text(
           label,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Colors.white70,
-              ),
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium?.copyWith(color: Colors.white70),
         ),
       ],
     );

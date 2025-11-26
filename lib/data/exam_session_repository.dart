@@ -41,15 +41,18 @@ class ExamSessionRepository {
       orderBy: 'answered_at ASC',
     );
 
-    final answers =
-        answerMaps.map((map) => ExamAnswerModel.fromMap(map)).toList();
+    final answers = answerMaps
+        .map((map) => ExamAnswerModel.fromMap(map))
+        .toList();
 
     return ExamSessionModel.fromMap(sessionMap).copyWith(answers: answers);
   }
 
   /// Récupère toutes les sessions d'un utilisateur (triées par date décroissante)
-  Future<List<ExamSessionModel>> getUserSessions(int userId,
-      {int? limit}) async {
+  Future<List<ExamSessionModel>> getUserSessions(
+    int userId, {
+    int? limit,
+  }) async {
     final db = await _dbHelper.database;
 
     final sessionMaps = await db.query(
@@ -73,8 +76,9 @@ class ExamSessionRepository {
         orderBy: 'answered_at ASC',
       );
 
-      final answers =
-          answerMaps.map((map) => ExamAnswerModel.fromMap(map)).toList();
+      final answers = answerMaps
+          .map((map) => ExamAnswerModel.fromMap(map))
+          .toList();
 
       sessions.add(
         ExamSessionModel.fromMap(sessionMap).copyWith(answers: answers),
@@ -105,8 +109,9 @@ class ExamSessionRepository {
         whereArgs: [sessionId],
       );
 
-      final answers =
-          answerMaps.map((map) => ExamAnswerModel.fromMap(map)).toList();
+      final answers = answerMaps
+          .map((map) => ExamAnswerModel.fromMap(map))
+          .toList();
 
       sessions.add(
         ExamSessionModel.fromMap(sessionMap).copyWith(answers: answers),
@@ -146,9 +151,7 @@ class ExamSessionRepository {
   }) async {
     final db = await _dbHelper.database;
 
-    final Map<String, dynamic> updates = {
-      'status': status.name,
-    };
+    final Map<String, dynamic> updates = {'status': status.name};
 
     if (status == ExamSessionStatus.completed) {
       updates['completed_at'] = DateTime.now().toIso8601String();
@@ -171,16 +174,20 @@ class ExamSessionRepository {
     final db = await _dbHelper.database;
 
     // Nombre total de sessions complétées
-    final totalSessions = Sqflite.firstIntValue(await db.rawQuery(
-      'SELECT COUNT(*) FROM exam_sessions WHERE user_id = ? AND status = ?',
-      [userId, ExamSessionStatus.completed.name],
-    ));
+    final totalSessions = Sqflite.firstIntValue(
+      await db.rawQuery(
+        'SELECT COUNT(*) FROM exam_sessions WHERE user_id = ? AND status = ?',
+        [userId, ExamSessionStatus.completed.name],
+      ),
+    );
 
     // Sessions réussies
-    final passedSessions = Sqflite.firstIntValue(await db.rawQuery(
-      'SELECT COUNT(*) FROM exam_sessions WHERE user_id = ? AND passed = 1',
-      [userId],
-    ));
+    final passedSessions = Sqflite.firstIntValue(
+      await db.rawQuery(
+        'SELECT COUNT(*) FROM exam_sessions WHERE user_id = ? AND passed = 1',
+        [userId],
+      ),
+    );
 
     // Score moyen
     final avgScoreResult = await db.rawQuery(
@@ -230,7 +237,8 @@ class ExamSessionRepository {
   Future<Map<String, dynamic>?> getAnswerWithQuestion(int answerId) async {
     final db = await _dbHelper.database;
 
-    final result = await db.rawQuery('''
+    final result = await db.rawQuery(
+      '''
       SELECT
         ea.*,
         q.question_text,
@@ -240,7 +248,9 @@ class ExamSessionRepository {
       FROM exam_answers ea
       INNER JOIN questions q ON ea.question_id = q.id
       WHERE ea.id = ?
-    ''', [answerId]);
+    ''',
+      [answerId],
+    );
 
     if (result.isEmpty) return null;
     return result.first;
@@ -248,10 +258,12 @@ class ExamSessionRepository {
 
   /// Récupère toutes les réponses d'une session avec les questions complètes
   Future<List<Map<String, dynamic>>> getSessionAnswersWithQuestions(
-      int sessionId) async {
+    int sessionId,
+  ) async {
     final db = await _dbHelper.database;
 
-    return await db.rawQuery('''
+    return await db.rawQuery(
+      '''
       SELECT
         ea.*,
         q.question_text,
@@ -263,7 +275,9 @@ class ExamSessionRepository {
       INNER JOIN questions q ON ea.question_id = q.id
       WHERE ea.exam_session_id = ?
       ORDER BY ea.answered_at ASC
-    ''', [sessionId]);
+    ''',
+      [sessionId],
+    );
   }
 }
 

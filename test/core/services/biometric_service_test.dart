@@ -24,13 +24,15 @@ void main() {
       expect(result.errorMessage, equals(errorMsg));
     });
 
-    test('getBiometricTypeDescription returns description for available types',
-        () async {
-      // Note: This test will vary based on the device/platform
-      final description = await service.getBiometricTypeDescription();
+    test(
+      'getBiometricTypeDescription returns description for available types',
+      () async {
+        // Note: This test will vary based on the device/platform
+        final description = await service.getBiometricTypeDescription();
 
-      expect(description, isNotEmpty);
-      expect(description, isA<String>());
-    });
+        expect(description, isNotEmpty);
+        expect(description, isA<String>());
+      },
+    );
   });
 }

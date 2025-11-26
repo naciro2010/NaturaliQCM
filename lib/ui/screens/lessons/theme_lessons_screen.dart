@@ -44,8 +44,10 @@ class _ThemeLessonsScreenState extends State<ThemeLessonsScreen> {
       final userId = userProfile['id'] as int;
 
       // Charge les leçons avec leur progression
-      final lessons =
-          await _lessonRepo.getLessonsWithProgress(userId, widget.themeId);
+      final lessons = await _lessonRepo.getLessonsWithProgress(
+        userId,
+        widget.themeId,
+      );
 
       setState(() {
         _lessonsWithProgress = lessons;
@@ -54,9 +56,9 @@ class _ThemeLessonsScreenState extends State<ThemeLessonsScreen> {
     } catch (e) {
       setState(() => _isLoading = false);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Erreur: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Erreur: $e')));
       }
     }
   }
@@ -72,24 +74,22 @@ class _ThemeLessonsScreenState extends State<ThemeLessonsScreen> {
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _lessonsWithProgress.isEmpty
-              ? const Center(
-                  child: Text('Aucune leçon disponible pour ce thème.'),
-                )
-              : ListView.builder(
-                  padding: const EdgeInsets.all(16),
-                  itemCount: _lessonsWithProgress.length,
-                  itemBuilder: (context, index) {
-                    final lesson = _lessonsWithProgress[index];
-                    return _LessonCard(
-                      lesson: lesson,
-                      onTap: () async {
-                        await context.push('/lessons/detail/${lesson['id']}');
-                        // Recharge après retour de la leçon
-                        _loadLessons();
-                      },
-                    );
+          ? const Center(child: Text('Aucune leçon disponible pour ce thème.'))
+          : ListView.builder(
+              padding: const EdgeInsets.all(16),
+              itemCount: _lessonsWithProgress.length,
+              itemBuilder: (context, index) {
+                final lesson = _lessonsWithProgress[index];
+                return _LessonCard(
+                  lesson: lesson,
+                  onTap: () async {
+                    await context.push('/lessons/detail/${lesson['id']}');
+                    // Recharge après retour de la leçon
+                    _loadLessons();
                   },
-                ),
+                );
+              },
+            ),
     );
   }
 }
