@@ -88,16 +88,11 @@ void main() {
         ),
       );
 
-      // Find the Icon widget within the button
-      final iconFinder = find.descendant(
-        of: find.byType(ElevatedButton),
-        matching: find.byType(Icon),
-      );
-      expect(iconFinder, findsOneWidget);
+      // Find the icon by its IconData
+      expect(find.byIcon(Icons.check), findsOneWidget);
 
-      // Verify the icon data
-      final Icon iconWidget = tester.widget(iconFinder);
-      expect(iconWidget.icon, equals(Icons.check));
+      // Verify the label is still present
+      expect(find.text('Test'), findsOneWidget);
     });
 
     testWidgets('respects fullWidth parameter', (WidgetTester tester) async {
